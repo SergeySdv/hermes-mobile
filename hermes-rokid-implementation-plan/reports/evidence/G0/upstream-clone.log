@@ -1,0 +1,3 @@
+Sanitized diagnostic excerpt (task statuses/errors/results only).
+Stack traces, bytecode dumps, test stdout/stderr, local paths and routine warnings omitted.
+Full raw log SHA-256: 5597975fb5717eb85ded2dade6b2267427bb15f71f2efbd47c66edb7991bc153

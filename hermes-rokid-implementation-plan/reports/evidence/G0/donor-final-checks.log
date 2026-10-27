@@ -1,0 +1,166 @@
+Sanitized diagnostic excerpt (task statuses/errors/results only).
+Stack traces, bytecode dumps, test stdout/stderr, local paths and routine warnings omitted.
+Full raw log SHA-256: 0ec5445ceeb5438bb7ec7c21200001313eab37f5f9f3939f32e65954efab50ff
+
+> Configure project :common
+> Configure project :glasses-app
+> Configure project :phone-app
+> Task :phone-app:preBuild UP-TO-DATE
+> Task :phone-app:preGithubDebugBuild UP-TO-DATE
+> Task :phone-app:mergeGithubDebugNativeDebugMetadata NO-SOURCE
+> Task :common:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :common:preBuild UP-TO-DATE
+> Task :common:preDebugBuild UP-TO-DATE
+> Task :common:generateDebugResources UP-TO-DATE
+> Task :common:packageDebugResources UP-TO-DATE
+> Task :common:processDebugNavigationResources UP-TO-DATE
+> Task :common:parseDebugLocalResources UP-TO-DATE
+> Task :common:generateDebugRFile UP-TO-DATE
+> Task :common:compileDebugKotlin UP-TO-DATE
+> Task :common:javaPreCompileDebug UP-TO-DATE
+> Task :common:compileDebugJavaWithJavac NO-SOURCE
+> Task :phone-app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :phone-app:generateGithubDebugBuildConfig UP-TO-DATE
+> Task :phone-app:generateGithubDebugResources UP-TO-DATE
+> Task :phone-app:packageGithubDebugResources UP-TO-DATE
+> Task :common:bundleLibCompileToJarDebug
+> Task :phone-app:processGithubDebugNavigationResources
+> Task :phone-app:parseGithubDebugLocalResources
+> Task :phone-app:javaPreCompileGithubDebug
+> Task :common:generateDebugAssets UP-TO-DATE
+> Task :common:mergeDebugAssets
+> Task :phone-app:generateGithubDebugAssets UP-TO-DATE
+> Task :phone-app:generateGithubDebugRFile
+> Task :phone-app:mergeGithubDebugAssets
+> Task :phone-app:kspGithubDebugKotlin
+> Task :phone-app:compressGithubDebugAssets
+> Task :phone-app:desugarGithubDebugFileDependencies
+> Task :phone-app:checkGithubDebugDuplicateClasses
+> Task :common:bundleLibRuntimeToJarDebug
+> Task :phone-app:mergeExtDexGithubDebug
+> Task :phone-app:compileGithubDebugKotlin
+> Task :common:compileDebugLibraryResources
+> Task :common:writeDebugAarMetadata
+> Task :phone-app:compileGithubDebugNavigationResources
+> Task :phone-app:checkGithubDebugAarMetadata
+> Task :phone-app:mapGithubDebugSourceSetPaths
+> Task :phone-app:createGithubDebugCompatibleScreenManifests
+> Task :common:extractDeepLinksDebug
+> Task :phone-app:extractDeepLinksGithubDebug
+> Task :common:processDebugJavaRes
+> Task :common:mergeDebugJniLibFolders
+> Task :common:mergeDebugNativeLibs NO-SOURCE
+> Task :common:copyDebugJniLibsProjectOnly
+> Task :phone-app:mergeGithubDebugJniLibFolders
+> Task :common:bundleLibRuntimeToDirDebug
+> Task :common:processDebugManifest
+> Task :phone-app:mergeGithubDebugResources
+> Task :phone-app:processGithubDebugMainManifest
+> Task :phone-app:processGithubDebugManifest
+> Task :phone-app:processGithubDebugManifestForPackage
+> Task :phone-app:mergeLibDexGithubDebug
+> Task :phone-app:validateSigningGithubDebug
+> Task :phone-app:writeGithubDebugAppMetadata
+> Task :phone-app:mergeGithubDebugNativeLibs
+> Task :phone-app:writeGithubDebugSigningConfigVersions
+> Task :phone-app:prePlayDebugBuild UP-TO-DATE
+> Task :phone-app:mergePlayDebugNativeDebugMetadata NO-SOURCE
+> Task :phone-app:generatePlayDebugBuildConfig
+> Task :phone-app:generatePlayDebugResources
+> Task :phone-app:stripGithubDebugDebugSymbols
+> Task :phone-app:packagePlayDebugResources
+> Task :phone-app:processPlayDebugNavigationResources
+> Task :phone-app:generatePlayDebugAssets UP-TO-DATE
+> Task :phone-app:mergePlayDebugAssets
+> Task :phone-app:javaPreCompilePlayDebug
+> Task :phone-app:compressPlayDebugAssets
+> Task :phone-app:parsePlayDebugLocalResources
+> Task :phone-app:desugarPlayDebugFileDependencies
+> Task :phone-app:checkPlayDebugAarMetadata
+> Task :phone-app:compilePlayDebugNavigationResources
+> Task :phone-app:generatePlayDebugRFile
+> Task :phone-app:mapPlayDebugSourceSetPaths
+> Task :phone-app:checkPlayDebugDuplicateClasses
+> Task :phone-app:processGithubDebugResources
+> Task :phone-app:mergeLibDexPlayDebug
+> Task :phone-app:createPlayDebugCompatibleScreenManifests
+> Task :phone-app:extractDeepLinksPlayDebug
+> Task :phone-app:processPlayDebugMainManifest
+> Task :phone-app:processPlayDebugManifest
+> Task :phone-app:mergePlayDebugJniLibFolders
+> Task :phone-app:processPlayDebugManifestForPackage
+> Task :phone-app:validateSigningPlayDebug
+> Task :phone-app:mergePlayDebugNativeLibs
+> Task :phone-app:writePlayDebugAppMetadata
+> Task :phone-app:writePlayDebugSigningConfigVersions
+> Task :glasses-app:preBuild UP-TO-DATE
+> Task :glasses-app:preDebugBuild UP-TO-DATE
+> Task :phone-app:stripPlayDebugDebugSymbols
+> Task :glasses-app:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :glasses-app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :glasses-app:generateDebugBuildConfig
+> Task :glasses-app:generateDebugResources
+> Task :glasses-app:packageDebugResources
+> Task :phone-app:mergePlayDebugResources
+> Task :phone-app:compileGithubDebugKotlin
+> Task :phone-app:mergeExtDexPlayDebug
+> Task :phone-app:kspPlayDebugKotlin
+> Task :glasses-app:processDebugNavigationResources
+> Task :phone-app:compileGithubDebugJavaWithJavac
+> Task :phone-app:dexBuilderGithubDebug
+> Task :phone-app:processGithubDebugJavaRes
+> Task :phone-app:mergeGithubDebugGlobalSynthetics
+> Task :phone-app:mergeProjectDexGithubDebug
+> Task :glasses-app:generateDebugAssets UP-TO-DATE
+> Task :glasses-app:javaPreCompileDebug
+> Task :glasses-app:parseDebugLocalResources
+> Task :glasses-app:mergeDebugAssets
+> Task :glasses-app:compressDebugAssets
+> Task :glasses-app:desugarDebugFileDependencies
+> Task :glasses-app:generateDebugRFile
+> Task :glasses-app:checkDebugAarMetadata
+> Task :phone-app:processPlayDebugResources
+> Task :phone-app:mergeGithubDebugJavaResource
+> Task :phone-app:compilePlayDebugKotlin
+> Task :glasses-app:compileDebugKotlin
+> Task :phone-app:compilePlayDebugJavaWithJavac
+> Task :phone-app:dexBuilderPlayDebug
+> Task :phone-app:processPlayDebugJavaRes
+> Task :phone-app:mergePlayDebugGlobalSynthetics
+> Task :phone-app:mergeProjectDexPlayDebug
+> Task :phone-app:mergePlayDebugJavaResource
+> Task :glasses-app:compileDebugJavaWithJavac
+> Task :glasses-app:compileDebugNavigationResources
+> Task :glasses-app:mapDebugSourceSetPaths
+> Task :glasses-app:createDebugCompatibleScreenManifests
+> Task :glasses-app:extractDeepLinksDebug
+> Task :glasses-app:mergeDebugResources
+> Task :glasses-app:processDebugMainManifest
+> Task :glasses-app:processDebugManifest
+> Task :glasses-app:processDebugJavaRes
+> Task :phone-app:packagePlayDebug
+> Task :phone-app:createPlayDebugApkListingFileRedirect
+> Task :phone-app:assemblePlayDebug
+> Task :glasses-app:mergeDebugJavaResource
+> Task :glasses-app:mergeDebugJniLibFolders
+> Task :glasses-app:checkDebugDuplicateClasses
+> Task :glasses-app:mergeDebugNativeLibs
+> Task :glasses-app:stripDebugDebugSymbols
+> Task :glasses-app:mergeLibDexDebug
+> Task :phone-app:packageGithubDebug
+> Task :phone-app:createGithubDebugApkListingFileRedirect
+> Task :phone-app:assembleGithubDebug
+> Task :glasses-app:validateSigningDebug
+> Task :glasses-app:writeDebugAppMetadata
+> Task :glasses-app:writeDebugSigningConfigVersions
+> Task :common:preDebugUnitTestBuild UP-TO-DATE
+> Task :glasses-app:mergeExtDexDebug
+> Task :glasses-app:processDebugManifestForPackage
+> Task :common:generateDebugUnitTestStubRFile
+> Task :common:javaPreCompileDebugUnitTest
+> Task :phone-app:bundleGithubDebugClassesToCompileJar
+> Task :phone-app:bundleGithubDebugClassesToRuntimeJar
+> Task :common:compileDebugUnitTestKotlin
+> Task :common:compileDebugUnitTestJavaWithJavac NO-SOURCE
+> Task :common:processDebugUnitTestJavaRes
+> Task :phone-app:kspGithubDebugUnitTestKotlin

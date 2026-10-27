@@ -1,0 +1,32 @@
+Sanitized diagnostic excerpt (task statuses/errors/results only).
+Stack traces, bytecode dumps, test stdout/stderr, local paths and routine warnings omitted.
+Full raw log SHA-256: 543e5965932c21bfd7471124ca09d88427ec8813920e285b23560316d7b243f2
+
+Starting a Gradle Daemon, 1 stopped Daemon could not be reused, use --status for details
+> Configure project :common
+> Configure project :glasses-app
+> Configure project :phone-app
+Checking the license for package Android SDK Platform 36 in $HOME/Library/Android/sdk/licenses
+License for package Android SDK Platform 36 accepted.
+Preparing "Install Android SDK Platform 36 (revision 2)".
+"Install Android SDK Platform 36 (revision 2)" ready.
+Installing Android SDK Platform 36 in $HOME/Library/Android/sdk/platforms/android-36
+"Install Android SDK Platform 36 (revision 2)" complete.
+"Install Android SDK Platform 36 (revision 2)" finished.
+> Task :phone-app:preBuild UP-TO-DATE
+> Task :phone-app:preGithubDebugBuild UP-TO-DATE
+> Task :phone-app:mergeGithubDebugNativeDebugMetadata NO-SOURCE
+> Task :common:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :common:preBuild UP-TO-DATE
+> Task :common:preDebugBuild UP-TO-DATE
+> Task :common:generateDebugResources
+> Task :common:packageDebugResources
+> Task :common:processDebugNavigationResources
+> Task :phone-app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :common:javaPreCompileDebug
+> Task :phone-app:generateGithubDebugBuildConfig
+> Task :phone-app:generateGithubDebugResources
+> Task :common:parseDebugLocalResources
+> Task :phone-app:packageGithubDebugResources
+> Task :common:generateDebugRFile
+> Task :phone-app:processGithubDebugNavigationResources

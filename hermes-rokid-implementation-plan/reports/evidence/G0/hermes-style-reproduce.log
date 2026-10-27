@@ -1,0 +1,11 @@
+Sanitized diagnostic excerpt (task statuses/errors/results only).
+Stack traces, bytecode dumps, test stdout/stderr, local paths and routine warnings omitted.
+Full raw log SHA-256: 6843baceaee4032ece4724e70a51f86957f752e01bad924cbcbbde16f4bea9e0
+
+Calculating task graph as no cached configuration is available for tasks: ktlintCheck checkColorLiterals
+> Task :app:checkColorLiterals
+checkColorLiterals: no hardcoded Color literals found. ✅
+> Task :app:ktlintCheck
+BUILD SUCCESSFUL in 24s
+2 actionable tasks: 2 executed
+Configuration cache entry stored.

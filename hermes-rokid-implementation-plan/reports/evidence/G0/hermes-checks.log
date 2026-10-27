@@ -1,0 +1,105 @@
+Sanitized diagnostic excerpt (task statuses/errors/results only).
+Stack traces, bytecode dumps, test stdout/stderr, local paths and routine warnings omitted.
+Full raw log SHA-256: 7ddc7aebbe2321d4bf2762a952ed65d17f5871d54041bc61fb35f7168f9f0ec9
+
+Starting a Gradle Daemon, 1 incompatible Daemon could not be reused, use --status for details
+Calculating task graph as no cached configuration is available for tasks: assembleDebug testDebugUnitTest ktlintCheck checkColorLiterals lintDebug compileReleaseKotlin
+> Configure project :app
+Checking the license for package Android SDK Build-Tools 37 in $HOME/Library/Android/sdk/licenses
+License for package Android SDK Build-Tools 37 accepted.
+Preparing "Install Android SDK Build-Tools 37 v.37.0.0".
+"Install Android SDK Build-Tools 37 v.37.0.0" ready.
+Installing Android SDK Build-Tools 37 in $HOME/Library/Android/sdk/build-tools/37.0.0
+"Install Android SDK Build-Tools 37 v.37.0.0" complete.
+"Install Android SDK Build-Tools 37 v.37.0.0" finished.
+> Task :app:generateDebugAssets UP-TO-DATE
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:preReleaseBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :app:ktlintCheck FAILED
+sh: ktlint: command not found
+> Task :app:createDebugCompatibleScreenManifests
+> Task :app:mapDebugSourceSetPaths
+> Task :app:generateReleaseBuildConfig
+> Task :app:generateDebugResources
+> Task :app:extractDeepLinksDebug
+> Task :app:generateReleaseResources
+> Task :app:generateDebugBuildConfig
+> Task :app:javaPreCompileDebugUnitTest
+> Task :app:checkColorLiterals
+checkColorLiterals: no hardcoded Color literals found. ✅
+> Task :app:desugarDebugFileDependencies
+> Task :app:packageDebugResources
+> Task :app:packageReleaseResources
+> Task :app:writeDebugAppMetadata
+> Task :app:validateSigningDebug
+> Task :app:preDebugAndroidTestBuild SKIPPED
+> Task :app:writeDebugSigningConfigVersions
+> Task :app:extractProguardFiles
+> Task :app:mergeDebugJniLibFolders
+> Task :app:generateDebugGlobalSynthetics
+> Task :app:javaPreCompileDebug
+> Task :app:checkDebugDuplicateClasses
+> Task :app:processReleaseNavigationResources
+> Task :app:processDebugNavigationResources
+> Task :app:processDebugMainManifest
+> Task :app:processDebugManifest
+> Task :app:checkDebugAarMetadata
+> Task :app:compileDebugNavigationResources
+> Task :app:mergeDebugNativeLibs
+> Task :app:parseDebugLocalResources
+> Task :app:processDebugManifestForPackage
+> Task :app:parseReleaseLocalResources
+> Task :app:mergeDebugResources
+> Task :app:generateReleaseRFile
+> Task :app:stripDebugDebugSymbols
+> Task :app:generateDebugRFile
+> Task :app:mergeDebugAssets
+> Task :app:compressDebugAssets
+> Task :app:mergeLibDexDebug
+> Task :app:processDebugResources
+> Task :app:mergeExtDexDebug
+> Task :app:kspDebugKotlin
+> Task :app:kspReleaseKotlin
+> Task :app:compileDebugKotlin
+> Task :app:compileReleaseKotlin
+The root cause java.lang.OutOfMemoryError was thrown at: org.jetbrains.org.objectweb.asm.tree.analysis.Frame.<init>(Frame.java:96)
+Caused by: java.lang.OutOfMemoryError: GC overhead limit exceeded
+> Task :app:compileReleaseKotlin FAILED
+> Task :app:compileDebugKotlin
+> Task :app:processDebugJavaRes
+> Task :app:mergeDebugJavaResource
+> Task :app:compileDebugJavaWithJavac
+> Task :app:bundleDebugClassesToRuntimeJar
+> Task :app:bundleDebugClassesToCompileJar
+> Task :app:generateDebugLintReportModel
+> Task :app:generateDebugUnitTestLintModel
+> Task :app:kspDebugUnitTestKotlin
+> Task :app:generateDebugAndroidTestLintModel
+> Task :app:dexBuilderDebug
+> Task :app:mergeProjectDexDebug
+> Task :app:packageDebug
+> Task :app:assembleDebug
+> Task :app:createDebugApkListingFileRedirect
+> Task :app:lintAnalyzeDebug
+> Task :app:lintAnalyzeDebugAndroidTest
+> Task :app:lintAnalyzeDebugUnitTest
+> Task :app:compileDebugUnitTestKotlin
+> Task :app:compileDebugUnitTestJavaWithJavac NO-SOURCE
+> Task :app:copyRoomSchemas NO-SOURCE
+> Task :app:processDebugUnitTestJavaRes
+> Task :app:testDebugUnitTest
+> Task :app:lintReportDebug
+> Task :app:lintDebug
+FAILURE: Build completed with 2 failures.
+* What went wrong:
+Execution failed for task ':app:ktlintCheck' (registered in build file 'app/build.gradle.kts').
+* What went wrong:
+Execution failed for task ':app:compileReleaseKotlin' (registered by plugin 'com.android.internal.application').
+   > Kotlin compiler error
+         The root cause java.lang.OutOfMemoryError was thrown at: org.jetbrains.org.objectweb.asm.tree.analysis.Frame.<init>(Frame.java:96)
+         Caused by: java.lang.OutOfMemoryError: GC overhead limit exceeded
+BUILD FAILED in 15m 15s
+Configuration cache entry stored.

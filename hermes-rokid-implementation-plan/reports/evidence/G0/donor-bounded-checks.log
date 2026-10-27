@@ -1,0 +1,36 @@
+Sanitized diagnostic excerpt (task statuses/errors/results only).
+Stack traces, bytecode dumps, test stdout/stderr, local paths and routine warnings omitted.
+Full raw log SHA-256: 6dced8e26c4b4cb3089330b24d847fb30c092b3f03526a5b591a5f837bb22d63
+
+Starting a Gradle Daemon, 1 stopped Daemon could not be reused, use --status for details
+> Configure project :common
+> Configure project :glasses-app
+> Configure project :phone-app
+> Task :phone-app:preBuild UP-TO-DATE
+> Task :phone-app:preGithubDebugBuild UP-TO-DATE
+> Task :phone-app:mergeGithubDebugNativeDebugMetadata NO-SOURCE
+> Task :common:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :common:preBuild UP-TO-DATE
+> Task :common:preDebugBuild UP-TO-DATE
+> Task :common:generateDebugResources UP-TO-DATE
+> Task :common:packageDebugResources UP-TO-DATE
+> Task :common:processDebugNavigationResources UP-TO-DATE
+> Task :common:parseDebugLocalResources UP-TO-DATE
+> Task :common:generateDebugRFile UP-TO-DATE
+> Task :common:compileDebugKotlin
+> Task :common:javaPreCompileDebug UP-TO-DATE
+> Task :phone-app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :phone-app:generateGithubDebugBuildConfig UP-TO-DATE
+> Task :phone-app:generateGithubDebugResources UP-TO-DATE
+> Task :phone-app:packageGithubDebugResources UP-TO-DATE
+> Task :phone-app:processGithubDebugNavigationResources
+> Task :phone-app:processGithubDebugNavigationResources FAILED
+FAILURE: Build failed with an exception.
+* What went wrong:
+Execution failed for task ':phone-app:processGithubDebugNavigationResources' (registered by plugin 'com.android.internal.application').
+> Could not resolve all files for configuration ':phone-app:githubDebugRuntimeClasspath'.
+   > Failed to transform foundation.aar (androidx.compose.foundation:foundation-android:1.10.1) to match attributes {artifactType=android-navigation-xml, org.gradle.category=library, org.gradle.jvm.environment=android, org.gradle.libraryelements=aar, org.gradle.status=release, org.gradle.usage=java-runtime, org.jetbrains.kotlin.platform.type=androidJvm}.
+      > Could not download foundation.aar (androidx.compose.foundation:foundation-android:1.10.1)
+         > Could not get resource 'https://dl.google.com/dl/android/maven2/androidx/compose/foundation/foundation-android/1.10.1/foundation-android-1.10.1.aar'.
+            > Read timed out
+BUILD FAILED in 3m 31s
