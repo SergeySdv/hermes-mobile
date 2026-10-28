@@ -12,7 +12,8 @@
 | [T05](tasks/T05-DISPLAY-STREAMING.md) | Snapshot stream, pages, version negotiation | G4 | Промежуточный текст на очках | G5 |
 | [T06](tasks/T06-LOCAL-OCR.md) | Offline Chinese OCR → RU | G5 | Независимый fast path | G6 |
 | [T07](tasks/T07-RELIABILITY.md) | Ledger recovery, failure injection, pocket/security | G6 | Надёжный MVP | G7 |
-| [T08](tasks/T08-RELEASE.md) | Signing, pilot, rollback, release notes | G7 | Независимые releases + compatibility matrix | G8 |
+| [T08 core](tasks/T08-RELEASE.md) | Обычный Hermes release | Собственный RC evidence/review, без G0–G8 Rokid | Один Hermes APK | H-RELEASE |
+| [T08 Rokid](tasks/T08-RELEASE.md) | Add-on/companion, pilot, compatibility | G0–G7 + H-RELEASE выбранного Hermes + owner approval | Два Rokid APK; три APK в полной matrix | G8 |
 | [T09](tasks/T09-VOICE-VIDEO.md) | Push-to-talk; отдельные audio/video spikes | G8 + scope approval | Независимые subphase reports | G9 |
 
 ## Рекомендуемая нарезка PR
@@ -26,7 +27,7 @@ PR-05 shared observation/context + Room migrations.
 PR-06 incremental display + companion protocol compatibility.
 PR-07 local OCR/translation setup и privacy modes.
 PR-08 recovery/security/bounded queues и failure tests.
-PR-09 release build/signing/docs/rollback.
+PR-09 раздельные core и Rokid release build/signing/docs/rollback; core не ждёт donor/CXR/hardware. H-RELEASE пока NOT_RUN. После текущего review следующий шаг — незавершённый T00, не реализация этих PR.
 
 Нельзя считать успешный PR-03 завершённым G3: gate требует реальный сквозной сценарий. Формально смешивать небольшие соседние PR можно после review, но не скрывать failure cases в «следующей задаче», если они являются acceptance текущего gate.
 

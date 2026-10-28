@@ -52,6 +52,8 @@ DisplayProjection:
 
 ## Порядок отправки
 
+В IPC v1 этот порядок начинается только после фото → draft → явного подтверждения в Hermes. Действительность grant/scope проверяется перед принятием draft и перед началом отправки; expiry не вызывает auto-renew/auto-submit.
+
 1. Проверить scope, consent, readiness и media integrity.
 2. Зафиксировать payload и immutable target, создать PREPARED.
 3. До сетевой отправки записать SUBMITTING.

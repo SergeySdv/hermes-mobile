@@ -4,9 +4,22 @@ Gate — проверяемое условие, а не дата и не про�
 
 ## Допуск архитектуры
 
-ADR-003 PROPOSED: до review/ACCEPTED и допуска соответствующих gates функциональная реализация (включая prototypes) запрещена. Раздельные APK не закрывают и не сбрасывают G0; existing evidence остаётся историческим. G3 дополнительно требует IPC trust/compatibility и EXT-01..10; G8 — независимые core/add-on/companion release lanes.
+ADR-003 PROPOSED: до review/ACCEPTED и допуска соответствующих gates функциональная реализация (включая prototypes) запрещена. Раздельные APK не закрывают и не сбрасывают G0; existing evidence остаётся историческим. G3 дополнительно требует IPC trust/compatibility и EXT-01..11; H-RELEASE — обычный Hermes; G8 — add-on/companion и совместимость с Hermes.
 
-## Граф зависимостей
+## Два независимых направления выпуска
+
+**H-RELEASE (NOT_RUN)** — допуск конкретного обычного Hermes APK: собственные build/unit/style/lint,
+release/R8/signing, UI/migrations и regression проверки; при наличии generic broker — IPC security,
+compatibility и отсутствие дополнения с fake client. Требуется review evidence этого release candidate.
+Он не зависит от исторического общего G0, donor build, CXR repositories или G1–G8 Rokid.
+Результаты Hermes из G0 можно приложить как evidence, но не автоматически присвоить PASS.
+
+**G8 (Rokid)** — выпуск add-on + glasses companion и проверка их совместимости с уже независимо
+проверенной версией Hermes. Сохраняет G0–G7, hardware/pilot и owner acceptance. Общий G0 остаётся
+BLOCKED; его разделение для выпуска core не закрывает T00. Полный комплект содержит три APK,
+но выпуск дополнения не требует повторного выпуска неизменённого Hermes.
+
+## Граф зависимостей (направление Rokid; H-RELEASE независимо)
 
 ```text
 G0 Baseline
@@ -42,7 +55,8 @@ G0 Baseline
 | G5 | T05 | Protocol/UI agent + hardware operator | Релиз со streaming label |
 | G6 | T06 | Vision agent + owner quality review | Режим быстрого переводчика |
 | G7 | T07 | QA/reliability agent + hardware operator | Повседневное использование |
-| G8 | T08 | Release operator + owner | Раздача/установка production APK |
+| H-RELEASE | T08, core lane | Core release operator + reviewer | Выпуск обычного Hermes APK |
+| G8 | T08, Rokid lane | Release operator + owner | Выпуск add-on/companion с заявленной совместимостью |
 | G9 | T09 | Отдельный phase owner | Голос/видео; не блокирует уже выпущенный MVP |
 
 ## G0 — исходная точка и происхождение
@@ -73,7 +87,7 @@ PASS: login → text → image → follow-up → reload history; cross-session i
 
 В форке включается Rokid, подключается устройство, выводится локальный текст. Затем фото приходит в composer того же клиента; явная отправка даёт один запрос и один ответ агента на телефон/очки. Никакого переносимого donor LLM stack.
 
-PASS: минимальный slice повторён 10 раз; фото не теряется, нет двойной отправки; выключение feature останавливает сервис; core variant/feature-off проходит regression. Companion и phone protocol совместимы; LICENSE/NOTICE сохранены.
+PASS: минимальный slice повторён 10 раз; фото не теряется, нет двойной отправки; выключение feature останавливает сервис; общий Hermes APK проходит regression без дополнения. Companion и phone protocol совместимы; LICENSE/NOTICE сохранены.
 
 ## G4 — один разговор и визуальный контекст
 
@@ -95,13 +109,13 @@ PASS: установленный Chinese OCR + RU translation работают �
 
 ## G7 — надёжность и безопасность
 
-PASS: failure matrix пройдена; ноль выявленных повторных side effects и cross-profile leaks; unknown outcome не уходит в автоматическую повторную отправку. 60-минутный pocket test с погашенным экраном и контролируемыми разрывами; минимум 30 операций. Force-stop корректно требует ручного возвращения, а не обещает самовосстановление.
+PASS: failure matrix пройдена; ноль выявленных повторных side effects и cross-profile leaks; unknown outcome не уходит в автоматическую повторную отправку. 60-минутный pocket test, минимум 30 операций, раздельно учитывает local translation, display и новые запросы по [TEST-PLAN](09-TEST-PLAN.md). Для новых запросов экран включается и отправка подтверждается в Hermes; истёкший grant не продлевается автоматически. Force-stop корректно требует ручного возвращения, а не обещает самовосстановление.
 
 Battery/thermal baseline и активный режим измерены в повторяемых условиях. Нет crash/ANR, неограниченных очередей, нескончаемого mic/camera usage и сетевых retry storms.
 
-## G8 — выпуск
+## G8 — выпуск Rokid add-on и companion
 
-PASS: пройдены G0–G7, нет открытых critical/high рисков, проведён пилот в двух отдельных пользовательских сессиях, владелец принял UX/качество/расход батареи. Есть подписанные два APK, checksums, protocol matrix, license notices, release notes, SBOM/dependency list и проверенный rollback без потери baseline чатов.
+PASS: пройдены G0–G7 и H-RELEASE выбранной версии Hermes, нет открытых critical/high рисков, проведён пилот в двух отдельных пользовательских сессиях, владелец принял UX/качество/расход батареи. Есть два подписанных артефакта Rokid (add-on и companion) и независимо допущенный H-RELEASE Hermes APK — три APK в полной compatibility matrix, checksums, license notices, release notes, SBOM/dependency list и проверенный rollback без потери baseline чатов.
 
 Не объявлять APK совместимым со всеми Rokid: support statement содержит только реально проверенные модель/firmware/Android и серверную версию.
 

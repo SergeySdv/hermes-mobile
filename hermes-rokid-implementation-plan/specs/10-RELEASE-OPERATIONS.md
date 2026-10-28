@@ -32,9 +32,11 @@ Release signing key хранится у владельца/в защищённо
 
 ## Независимость основного клиента
 
-CI/release Hermes не зависит от сборки, Maven repositories, proprietary SDK или hardware tests Rokid. Обязательны собственный regression suite, generic IPC tests с fake client и EXT-01..10. Add-on и companion имеют отдельные workflows/артефакты. Integration lane проверяет версии N/N-1 и fail-closed несовместимость; сбой add-on не блокирует обычный релиз core. Security regression broker блокирует core release. Детали trust/signers/rollback: [ADR-003](../adr/ADR-003-OPTIONAL-ANDROID-ADDON.md).
+CI/release Hermes не зависит от сборки, Maven repositories, proprietary SDK или hardware tests Rokid. Обязательны собственный regression suite, при наличии broker — generic IPC tests с fake client и применимые core-проверки EXT-01..11. Их аппаратные варианты не являются prerequisite core release. Add-on и companion имеют отдельные workflows/артефакты. Integration lane проверяет версии N/N-1 и fail-closed несовместимость; сбой add-on не блокирует обычный релиз core. Security regression broker блокирует core release. Детали trust/signers/rollback: [ADR-003](../adr/ADR-003-OPTIONAL-ANDROID-ADDON.md).
 
-## Release candidates
+Обычный Hermes выпускается по H-RELEASE (пока NOT_RUN), независимо от общего G0 BLOCKED. Add-on/companion — по G8 с G0–G7 и H-RELEASE выбранной версии Hermes. Новые допуски не наследуют PASS из прежних проверок; критерии определены в [GATES](02-GATES.md).
+
+## Release candidates направления Rokid
 
 RC0: локальные текст/камера/transfer, без cloud permissions сверх необходимого.
 RC1: полноценный photo/chat/context, streaming.
@@ -65,4 +67,4 @@ Server rollback: только отдельный approved patch из VPS runbook
 
 ## Финальный deliverable реализации
 
-Три независимо подписанных APK, hashes, source/patch links, origin/license inventory, capability matrix, passed gate reports G0–G8, установочная инструкция, release notes, known limitations и rollback runbook. Этот Markdown-пакет сам по себе не является ни одним из этих готовых APK и не подтверждает их тестирование.
+Core lane: один Hermes APK с собственными hashes/signing/evidence. Rokid lane: add-on и companion плюс проверенная версия Hermes (три APK в полном комплекте), hashes, source/patch links, origin/license inventory, capability matrix, passed gate reports G0–G8 для Rokid и H-RELEASE выбранного Hermes, установочная инструкция, release notes, known limitations и rollback runbook. Этот Markdown-пакет сам по себе не является ни одним из этих готовых APK и не подтверждает их тестирование.

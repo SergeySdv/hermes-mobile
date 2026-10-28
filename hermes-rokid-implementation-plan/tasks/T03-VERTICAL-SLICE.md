@@ -16,7 +16,7 @@
 
 На этом этапе допускается final-only display, но стабильный target scope и отсутствие двойного submit обязательны. Нельзя скопировать donor AI provider layer или создать вторую базу чатов. Передача файла — app-private ref с integrity validation, не oversized UI byte array.
 
-Интегрировать companion build или pinned build-unit; пока не менять wire behavior без потребности. Добавить codec/transfer unit tests, permissions UI tests и smoke отсутствующего/отключённого/удалённого/упавшего add-on (EXT-01..10). Проверить отказ connection/camera, не только happy path.
+Интегрировать companion build или pinned build-unit; пока не менять wire behavior без потребности. Добавить codec/transfer unit tests, permissions UI tests и smoke отсутствующего/отключённого/удалённого/упавшего add-on (EXT-01..11). Проверить отказ connection/camera, не только happy path.
 
 ## Deliverables
 

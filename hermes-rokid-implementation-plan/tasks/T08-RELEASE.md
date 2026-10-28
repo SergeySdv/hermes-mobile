@@ -1,8 +1,9 @@
-# T08 — Пилот, две подписанные сборки и откат
+# T08 — Независимый выпуск Hermes и выпуск Rokid с compatibility matrix
 
 Статус задания: NOT_STARTED (для T09 — DEFERRED).
-Зависимости: G7 PASS и approval владельца на pilot/install/release.
-Целевой gate: G8.
+Зависимости core lane: собственные RC проверки и review, без donor/CXR/G0–G8 Rokid.
+Зависимости Rokid lane: G0–G7 PASS, H-RELEASE выбранной версии Hermes и approval владельца на pilot/install/release.
+Целевые допуски: H-RELEASE (NOT_RUN), G8 (NOT_RUN); PASS не переносится автоматически.
 
 ## Прочитать
 
@@ -10,7 +11,9 @@
 
 ## Работа
 
-Собрать release варианты телефона/очков с проверкой R8 и без debug/private secrets. Подтвердить application IDs, signer fingerprint, protocol compatibility и воспроизводимые inputs. Проверить standalone core regression и EXT-01..10; отдельный core CI/release без Rokid dependencies.
+Core lane: собрать и проверить обычный Hermes APK независимо от Rokid. При наличии broker проверить generic IPC/security/absence с fake client; реальные очки не требуются.
+
+Rokid lane: собрать release варианты add-on/companion с проверкой R8 и без debug/private secrets. Подтвердить application IDs, signer fingerprint, protocol compatibility и воспроизводимые inputs. Проверить standalone core regression и EXT-01..11; отдельный core CI/release без Rokid dependencies.
 
 Провести две отдельные пользовательские pilot sessions с text/photo/context/OCR/stream. Собрать замечания владельца по читаемости, latency, noise, battery и обычному использованию телефона. Закрыть critical/high defects.
 
@@ -20,11 +23,13 @@
 
 ## Deliverables
 
-Три независимо подписанных APK с SHA-256/signature metadata, installation/update/rollback guide, release notes и `reports/G8-release.md`. Артефакты лежат в согласованном release storage, не автоматически публикуются в открытом репозитории.
+Core lane: один Hermes APK и собственный release report. Rokid lane: два новых APK (add-on/companion) и ссылка на проверенный Hermes; полный комплект из трёх APK с SHA-256/signature metadata, installation/update/rollback guide, release notes и `reports/G8-release.md`. Артефакты лежат в согласованном release storage, не автоматически публикуются в открытом репозитории.
 
 ## Acceptance
 
-G0–G7 evidence согласованы с точной compatibility matrix core IPC × add-on × companion; OPS-01..04; rollback rehearsal; owner acceptance; нет открытых critical/high блокеров.
+Core: H-RELEASE по собственному RC evidence, без аппаратных gates Rokid.
+
+Rokid: G0–G7 и H-RELEASE evidence согласованы с точной compatibility matrix core IPC × add-on × companion; OPS-01..04; rollback rehearsal; owner acceptance; нет открытых critical/high блокеров.
 
 ## Stop/rollback и ограничения
 

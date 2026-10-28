@@ -68,6 +68,8 @@ lease ≤15 минут, чтение FD timeout 30 s. Это DESIGN, не изм
 перед commit. FD недоверенный: pipe/изменяемый файл/неполный JPEG не должны зависнуть
 на main/Binder thread. При отзыве остановить чтение и удалить незавершённую копию.
 
+Фото, допустимое transport, но превышающее IPC bounds, отклоняется как LIMIT_EXCEEDED без draft/submit и без скрытого ухудшения качества; точный порядок — specs/03-CONTRACTS.md, тест EXT-11. Численные пределы не меняются.
+
 operationId дедуплицируется в Hermes в scope caller+grant+epoch. Повтор с другим payload
 отклоняется. Потеря ACK → status query, не новый submit. После перезапуска core/grant expiry
 старые handles недействительны; unresolved действия видны в существующем чате, повторная
@@ -133,12 +135,12 @@ Rollback core не нужен для отката дополнения; schema d
 
 ## Проверки, gates и решение review
 
-Обязательная матрица EXT-01..10 находится в specs/09-TEST-PLAN.md. Security tests проверяют
+Обязательная матрица EXT-01..11 находится в specs/09-TEST-PLAN.md. Security tests проверяют
 UID/signer/handle replay, scope race после FD copy, callback leak, malformed/oversize input,
 UNKNOWN без resend, flood/timeout и package lifecycle. Review отдельно принимает trust policy,
 capabilities, consent UX, FD bounds, contract evolution и lifecycle core broker.
 
-G0 остаётся как зафиксирован в reports/G0-baseline.md (BLOCKED); STATUS gate rows не меняются.
+G0 остаётся как зафиксирован в reports/G0-baseline.md (BLOCKED); STATUS указывает на этот BLOCKED и ожидающий review; старый planning snapshot отделён. H-RELEASE обычного Hermes независим от Rokid G0–G8 и пока NOT_RUN.
 Исторический G0 source audit не переписывается под новый дизайн. ADR review не закрывает G0,
 G1 или G2. До ACCEPTED и допуска соответствующих gates — только документация, без functional
 prototypes. После review: закрыть G0, выполнить G1/G2 по отдельному допуску; T03 начинает

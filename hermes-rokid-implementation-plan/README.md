@@ -18,7 +18,7 @@
 1. Скопировать каталог в рабочее дерево форка, например `docs/rokid-plan/`. Не заменять корневой upstream `AGENTS.md` этим файлом.
 2. Дать агенту [START_HERE.md](START_HERE.md), затем [AGENTS.md](AGENTS.md).
 3. Начать только с [T00](tasks/T00-BASELINE.md). Выполнять по одному заданию; на границе gate — отчёт и проверка допуска.
-4. Прочитать [ADR-003](adr/ADR-003-OPTIONAL-ANDROID-ADDON.md): PROPOSED, реализация до review и gates запрещена. G0 BLOCKED зафиксирован в [отчёте](reports/G0-baseline.md); таблица STATUS ожидает отдельного review и этим уточнением не изменяется.
+4. Прочитать [ADR-003](adr/ADR-003-OPTIONAL-ANDROID-ADDON.md): PROPOSED, реализация до review и gates запрещена. G0 BLOCKED зафиксирован в [отчёте](reports/G0-baseline.md); [STATUS](STATUS.md) указывает на актуальный BLOCKED; review ожидается.
 
 До принятия ADR разрешено только документирование. После review независимые моки и компоненты требуют допуска соответствующего task; отсутствие очков/VPS не даёт hardware PASS. Соответствующие интеграционные gates остаются `BLOCKED`/`NOT_RUN`. Отсутствие оборудования не является поводом выдумывать успешные проверки.
 
@@ -50,7 +50,7 @@
 
 ## Порядок работ
 
-`G0 → {G1 hardware, G2 backend} → G3 vertical slice → G4 sessions → G5 streaming → G6 OCR → G7 resilience → G8 release`
+Rokid: `G0 → {G1 hardware, G2 backend} → G3 vertical slice → G4 sessions → G5 streaming → G6 OCR → G7 resilience → G8 release`. Обычный Hermes выпускается независимо по H-RELEASE; G8 использует уже проверенную версию Hermes. H-RELEASE пока NOT_RUN.
 
 `G9 voice/video` — независимая следующая фаза, не условие выпуска текстово-фотографического MVP.
 

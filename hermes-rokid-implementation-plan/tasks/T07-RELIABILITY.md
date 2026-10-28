@@ -16,7 +16,7 @@
 
 Провести failure injection по каждому critical boundary минимум 10 раз с безопасным staging counter fixture. Не исполнять реальные destructive поручения для проверки идемпотентности. Проверить cross-profile access, OCR injection, redaction, local-only network и отсутствие server secrets на очках.
 
-Провести 60-минутный hardware pocket campaign и парные battery/thermal measurements. На OnePlus проверить фактическую OxygenOS policy; после force-stop требовать ручной запуск там, где это системно ожидается.
+Провести 60-минутный hardware pocket campaign с раздельными local translation/display/new request результатами и expiry grant по TEST-PLAN, без auto-renew; новые запросы требуют подтверждения в Hermes. Провести парные battery/thermal measurements. На OnePlus проверить фактическую OxygenOS policy; после force-stop требовать ручной запуск там, где это системно ожидается.
 
 ## Deliverables
 
@@ -24,7 +24,7 @@
 
 ## Acceptance
 
-EXT-01..10 на реальном add-on/companion, REC-01..06, SEC-01..06, UI-01/02, критерии G7. Ноль обнаруженных дублей side effects/утечек, ноль crash/ANR в campaign; unknown честно виден пользователю.
+EXT-01..11 на реальном add-on/companion, REC-01..06, SEC-01..06, UI-01/02, критерии G7. Ноль обнаруженных дублей side effects/утечек, ноль crash/ANR в campaign; unknown честно виден пользователю.
 
 ## Stop/rollback и ограничения
 

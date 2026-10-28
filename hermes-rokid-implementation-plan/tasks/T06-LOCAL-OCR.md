@@ -14,7 +14,7 @@
 
 Создать pipeline orientation/ROI → OCR blocks → reading order → translation → Observation/display. Добавить unreadable/model missing/cancel states. Избежать многократного открытия engine и неограниченного количества кадров.
 
-Режим Translate only не отправляет данные. Guide требует явного opt-in и отправляет один turn независимо от fast path, используя готовый OCR лишь как недоверенную аннотацию. Поздний OCR не запускает дополнительный скрытый turn. Локальный ответ не записывается как ответ Hermes.
+Режим Translate only не отправляет данные. Ask about this создаёт draft с готовым OCR как недоверенной аннотацией; отправка только после подтверждения в Hermes и проверки grant. Автоматический Guide/submit вне v1. Поздний OCR не запускает дополнительный скрытый turn. Локальный ответ не записывается как ответ Hermes.
 
 Подготовить 40-image dataset с human ground truth, включая цены/числа и нечитаемые изображения. Измерить отдельно OCR accuracy, translation usefulness, photo transfer и useful-frame latency.
 

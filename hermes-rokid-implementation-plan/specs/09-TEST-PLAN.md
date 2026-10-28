@@ -92,7 +92,13 @@ Hermes TTFT и total duration измеряются, но не задаются �
 
 ## Pocket/battery/thermal
 
-60 минут, экран телефона погашен большую часть времени, минимум 30 пользовательских операций, управляемые BT/network разрывы и возврат. В журнале отметить foreground notification, battery policy и реальные OS states. Системный force-stop тестируется отдельно, не маскируется как recoverable RF outage.
+60 минут, экран телефона погашен большую часть времени, минимум 30 пользовательских операций суммарно, управляемые BT/network разрывы и возврат. Отдельные counts/results для трёх сценариев (каждый обязателен):
+
+- Локальный перевод: без conversation grant и VPS, работает при истечении IPC lease.
+- Отображение ранее подтверждённого ответа: только при действующем assistant.display grant; по expiry output прекращается, projection очищается по TTL. Ответ остаётся в Hermes; auto-renew нет.
+- Новый агентный запрос: фото → draft при действующем grant → включение экрана и подтверждение отправки в Hermes. При expiry новый явный consent в Hermes; pending draft не отправляется автоматически. Без подтверждения — ноль новых agent turns.
+
+В campaign включить переход через expiry (lease ≤15 минут) для display и draft, записать время и последствия. 60 минут не означают один непрерывно действующий grant или обещание hands-free новых запросов. В журнале отметить foreground notification, battery policy и реальные OS states. Системный force-stop тестируется отдельно, не маскируется как recoverable RF outage.
 
 Battery: минимум 3 парных прогона idle и active, одинаковая яркость/связь/начальный диапазон заряда, записанные длительность и фактический workload. Показывать raw battery delta и, если доступны, energy/thermal traces; проценты за 5 минут не экстраполировать в обещание полного дня.
 
@@ -100,7 +106,7 @@ Battery: минимум 3 парных прогона idle и active, одина
 
 ## Evidence bundle
 
-Для gate: commit SHA всех трёх APK и IPC/wire versions, server version/image digest, firmware/OS, test dataset ID/hash, команды, начало/конец, result counts, sanitized logs, known limitations. Hardware видео/скриншот — с согласия, без людей/личных надписей. Failure должен быть воспроизводимым issue, не заметкой «иногда глючит».
+Для H-RELEASE — только core artifact/evidence и fake-client tests, без аппаратных результатов Rokid. Для Rokid gate: commit SHA всех трёх APK и IPC/wire versions, server version/image digest, firmware/OS, test dataset ID/hash, команды, начало/конец, result counts, sanitized logs, known limitations. Hardware видео/скриншот — с согласия, без людей/личных надписей. Failure должен быть воспроизводимым issue, не заметкой «иногда глючит».
 
 ## EXT — обязательные проверки отдельно устанавливаемого дополнения
 
@@ -119,6 +125,8 @@ Core lane использует synthetic fake APK, без donor/CXR; device inst
 | EXT-08 | Смена conversation/profile/logout при приёме JPEG и queued callback | Старый scope закрыт; ни attachment, ни output не попадают в новый разговор; draft требует нового grant |
 | EXT-09 | Invalid JPEG, oversized metadata/media, pipe stall, изменяемый FD, flood/slow consumer | Bounds/timeouts/очереди соблюдены, main thread не блокируется, temp files освобождены, обычный send работает |
 | EXT-10 | Повтор operationId, другой payload, ACK loss, restart/expiry, reinstall | Одна staging operation, конфликт отклонён, auto-submit отсутствует; remote UNKNOWN не повторяется; receipt доступен только исходному caller/scope |
+
+| EXT-11 | JPEG принят очковым транспортом, но превышает IPC bounds | Проверить 5 MiB / 5 MiB + 1 byte и 20 MP / 20 MP + 1 pixel в пределах transport 8 MiB/32 MP. Допустимая граница проходит валидацию при остальных выполненных условиях; превышение → LIMIT_EXCEEDED, ноль IPC draft/submit и server turns, исходник не перекодирован и hash не изменён. |
 
 G3: все EXT сценарии с fake client + required real slice; G7: failure campaign с реальным
 add-on/companion; G8: release-signed matrix и install/update/uninstall/rollback rehearsal.
