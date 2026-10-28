@@ -1,0 +1,20 @@
+[
+  {
+    "path": "/tmp/hermes-t00-donor/phone-app/build/outputs/apk/play/debug/phone-app-play-debug.apk",
+    "sha256": "6905fe683124cfb1381be0006b2de7dcf7d88d6fe4b680ebbeed56b1fd02fb51",
+    "bytes": 79979357,
+    "verify_exit": 0,
+    "signer_sha256": [
+      "be7558a33ba6253842b260a780f3c1977f563df12cf00ce5576b46fdb3e1b021"
+    ]
+  },
+  {
+    "path": "/tmp/hermes-t00-donor/phone-app/build/outputs/apk/github/debug/phone-app-github-debug.apk",
+    "sha256": "8c386c6b42d8e1726a948cf866bb64e62887d76f20b42fda215f45fad7fbf703",
+    "bytes": 82848242,
+    "verify_exit": 0,
+    "signer_sha256": [
+      "be7558a33ba6253842b260a780f3c1977f563df12cf00ce5576b46fdb3e1b021"
+    ]
+  }
+]

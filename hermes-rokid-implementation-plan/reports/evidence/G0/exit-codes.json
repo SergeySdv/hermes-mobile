@@ -1,0 +1,11 @@
+{
+  "hermes-checks.log": 1,
+  "hermes-style.log": 1,
+  "hermes-style-reproduce.log": 0,
+  "hermes-jdk21-reproduce.log": 0,
+  "automation-tests.log": 0,
+  "donor-checks.log": 1,
+  "donor-jdk21-checks.log": 130,
+  "donor-bounded-checks.log": 1,
+  "donor-final-checks.log": 130
+}

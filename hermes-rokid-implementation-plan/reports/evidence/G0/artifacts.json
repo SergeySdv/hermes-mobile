@@ -1,0 +1,23 @@
+{
+  "hermes_sha": "f03426df599d36b003b10ce29516434e591aef82",
+  "donor_sha": "c2238f3460ab09e57114b0817eb8f36d2ee4b7bf",
+  "apk_checks": [
+    {
+      "checkout": "baseline",
+      "sha256": "c01e1e7eb65103e3fec05671520b403b22c93b268f36ef56a10bafa20ab51de8",
+      "applicationId": "com.m57.hermescontrol.dev",
+      "versionCode": 1,
+      "versionName": "1.0-dev-dev"
+    },
+    {
+      "checkout": "reproduce",
+      "sha256": "c01e1e7eb65103e3fec05671520b403b22c93b268f36ef56a10bafa20ab51de8",
+      "applicationId": "com.m57.hermescontrol.dev",
+      "versionCode": 1,
+      "versionName": "1.0-dev-dev"
+    }
+  ],
+  "signer_sha256": "c3053abf8d6f71fea74c0f2c9ae7dc693a6a08e3fa8b1a09c3763a52495f49f0",
+  "installed": false,
+  "reproduction_limit": "Separate checkout, shared Gradle build/dependency cache; not a cold offline or no-cache rebuild."
+}

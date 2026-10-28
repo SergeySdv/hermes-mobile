@@ -1,0 +1,9 @@
+Sanitized diagnostic excerpt (task statuses/errors/results only).
+Stack traces, bytecode dumps, test stdout/stderr, local paths and routine warnings omitted.
+Full raw log SHA-256: 0ec910a11aa867f19432858e13b623ac3a0a364ff4211c96c938f24b980d4363
+
+Starting a Gradle Daemon, 1 busy and 1 incompatible Daemons could not be reused, use --status for details
+FAILURE: Build failed with an exception.
+* What went wrong:
+Timeout waiting to lock Configuration Cache (/tmp/hermes-t00-baseline/.gradle/configuration-cache). It is currently in use by another process.
+BUILD FAILED in 1m 2s

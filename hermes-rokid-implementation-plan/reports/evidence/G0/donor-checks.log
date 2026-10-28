@@ -1,0 +1,8 @@
+Sanitized diagnostic excerpt (task statuses/errors/results only).
+Stack traces, bytecode dumps, test stdout/stderr, local paths and routine warnings omitted.
+Full raw log SHA-256: 199eff78c1330156764e01dc7aaad3da5e55efcdc121208a7d8a0060cd978f7e
+
+Starting a Gradle Daemon, 1 incompatible and 1 stopped Daemons could not be reused, use --status for details
+FAILURE: Build failed with an exception.
+* What went wrong:
+Unable to download toolchain matching the requirements ({languageVersion=21, vendor=any vendor, implementation=vendor-specific, nativeImageCapable=false}) from 'null', due to: No defined toolchain download url for MAC_OS on aarch64 architecture.

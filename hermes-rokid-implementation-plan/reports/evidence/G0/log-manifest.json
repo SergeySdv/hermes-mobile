@@ -1,0 +1,62 @@
+[
+  {
+    "file": "automation-tests.log",
+    "raw_lines": 39,
+    "retained_lines": 36,
+    "raw_sha256": "87096cc71a290e5c95ed576cde0e1a7387222535a71a371354bb609a789de2cd"
+  },
+  {
+    "file": "donor-bounded-checks.log",
+    "raw_lines": 62,
+    "retained_lines": 32,
+    "raw_sha256": "6dced8e26c4b4cb3089330b24d847fb30c092b3f03526a5b591a5f837bb22d63"
+  },
+  {
+    "file": "donor-checks.log",
+    "raw_lines": 14,
+    "retained_lines": 4,
+    "raw_sha256": "199eff78c1330156764e01dc7aaad3da5e55efcdc121208a7d8a0060cd978f7e"
+  },
+  {
+    "file": "donor-final-checks.log",
+    "raw_lines": 331,
+    "retained_lines": 162,
+    "raw_sha256": "0ec5445ceeb5438bb7ec7c21200001313eab37f5f9f3939f32e65954efab50ff"
+  },
+  {
+    "file": "donor-jdk21-checks.log",
+    "raw_lines": 47,
+    "retained_lines": 28,
+    "raw_sha256": "543e5965932c21bfd7471124ca09d88427ec8813920e285b23560316d7b243f2"
+  },
+  {
+    "file": "hermes-checks.log",
+    "raw_lines": 1679,
+    "retained_lines": 101,
+    "raw_sha256": "7ddc7aebbe2321d4bf2762a952ed65d17f5871d54041bc61fb35f7168f9f0ec9"
+  },
+  {
+    "file": "hermes-jdk21-reproduce.log",
+    "raw_lines": 130,
+    "retained_lines": 78,
+    "raw_sha256": "bb942ddbf56614fdd930130dda790867148fd88ceb2c71f60c3aa2476587184e"
+  },
+  {
+    "file": "hermes-style-reproduce.log",
+    "raw_lines": 18,
+    "retained_lines": 7,
+    "raw_sha256": "6843baceaee4032ece4724e70a51f86957f752e01bad924cbcbbde16f4bea9e0"
+  },
+  {
+    "file": "hermes-style.log",
+    "raw_lines": 19,
+    "retained_lines": 5,
+    "raw_sha256": "0ec910a11aa867f19432858e13b623ac3a0a364ff4211c96c938f24b980d4363"
+  },
+  {
+    "file": "upstream-clone.log",
+    "raw_lines": 1,
+    "retained_lines": 0,
+    "raw_sha256": "5597975fb5717eb85ded2dade6b2267427bb15f71f2efbd47c66edb7991bc153"
+  }
+]
