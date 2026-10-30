@@ -1,0 +1,16 @@
+{
+  "device": "a8bf1333",
+  "model": "CPH2551",
+  "android": 16,
+  "apkSourceCommit": "ea8ffa69",
+  "packages": {
+    "com.m57.hermescontrol.dev": {
+      "sha256": "270f3ab6245c990c8a95a0a062b74e4ce551d0c379bdfe5ebeb78806773d75b1",
+      "bytes": 44705709
+    },
+    "com.m57.hermes.extensiontest": {
+      "sha256": "6e3f8f97e5587379ce77c827cc2dc1c40d009903fd333bfcd4e6fb54cafb99c8",
+      "bytes": 969936
+    }
+  }
+}
