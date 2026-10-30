@@ -1,0 +1,6 @@
+
+com.m57.hermescontrol.extension.ExtensionBrokerTest:..
+
+Time: 7.472
+
+OK (2 tests)

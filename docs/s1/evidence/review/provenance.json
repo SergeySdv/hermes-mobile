@@ -1,0 +1,9 @@
+{
+  "test_source_commit": "52e245f6",
+  "instrumentation_apk_sha256": "579f4cffed2216a975aea2ff8478af4a91cf5b4e3844bb16dcdc9261904250a6",
+  "installed_hermes_apk_sha256": "270f3ab6245c990c8a95a0a062b74e4ce551d0c379bdfe5ebeb78806773d75b1",
+  "hermes_source_commit": "ea8ffa69",
+  "android_api": 36,
+  "device": "emulator-5554",
+  "production_source_changes_since_ea8ffa69": false
+}

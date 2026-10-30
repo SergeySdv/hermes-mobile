@@ -110,3 +110,29 @@ production VPS were outside this run. No merge or release was performed.
 The next change should address review findings in this generic IPC slice, then
 introduce the separately scoped Rokid adapter only after its own authorization
 and gates. Do not import the donor's phone chat/history/network stack.
+
+## Review requirement → test → observed result
+
+The original evidence above is retained. This follow-up adds only the previously
+missing deterministic scope-race test and a compiled-release isolation check.
+No application source changed. New tests at `52e245f6` run against the installed
+Hermes APK from `ea8ffa69`; [provenance](evidence/review/provenance.json) records
+both the test APK and application hashes. Existing UI evidence uses the APK pair
+in [apk-hashes.json](evidence/apk-hashes.json), not a newly asserted run.
+
+| Requirement | Concrete test / evidence | Actual result |
+| --- | --- | --- |
+| Same input operation does not duplicate a draft | `ExtensionBrokerTest.deduplicationExpiryAndConversationChangeFailClosed`; `scripts/s1/ui_smoke.py` repeat operation and composer assertions | PASS: adapter called once for identical payload, changed payload gives PAYLOAD_CONFLICT; UI has one attachment and one text draft; one upload/prompt after Send |
+| Conversation/profile change rejects in-flight and late work | `ExtensionBrokerTest.profileAndConversationSwitchDiscardInFlightDraftAndQueuedDisplay` | PASS for conversation ID, connection profile, agent profile and endpoint independently: pause hashing at IO boundary, queue DISPLAY, switch context, release IO; zero composer calls, REVOKED, no stale display/ACK. [Two broker tests](evidence/review/scope-tests.txt) passed on API 36 |
+| Incompatible IPC version | `IpcBoundaryTest.actualBinderNegotiationAndUnissuedGrantAreFailClosed`; UI Test unsupported version | PASS: UNSUPPORTED_VERSION, no additional backend side effects; existing [instrumentation](evidence/addon-instrumentation.txt) and [smoke](evidence/smoke-final.log) |
+| Image exceeds IPC limits | `ExtensionPhotoTest.rejectsTransportSizedPhotoOverIpcLimitAndMalformedJpeg`, `acceptsPixelBoundaryAndRejectsOverLimit` | PASS: 5 MiB+1 and >20 MP rejected with LIMIT_EXCEEDED; exact 20 MP accepted. Original bytes preserved by `copiesOriginalBytesAndHashesTextAndMedia`; [four photo tests](evidence/core-instrumentation.txt). No claim of a physical glasses transfer test |
+| Mock backend uses normal send/response path | `scripts/s1/ui_smoke.py`, real separate packages/Binder, existing composer Send, host counters and both UI answers; [transport audit](evidence/review/transport-audit.json) | PASS: counters unchanged at staging, +1 upload and +1 prompt only after Send. Existing REST/WebSocket source files unchanged. Mock is an external loopback process reached through the ordinary connection profile, not an app-side fake response |
+| No test backend/trust substitute in ordinary release | `scripts/s1/check_release_isolation.py` after `:app:compileReleaseJavaWithJavac`; [compiled result](evidence/review/release-isolation.json), prior [independent build](evidence/independent-core-build.log) | PASS: 5173 release classes scanned; no harness classes/mock markers, DEBUG=false, empty test signer, trusted() compiles to false. Ordinary build excludes optional harness. Structural compiled-class check, not a signed release APK/device test |
+
+The first new scope-race test attempt failed because an unpaused text hash could
+finish before the context switch (a legitimately accepted draft). Its [failure
+log](evidence/review/first-race-test-failure.txt) is preserved. The corrected test
+uses a test-only latch around hashing, without changing production behavior;
+this establishes the intended race deterministically. Tests do not replace the
+remaining production/adversarial review listed above. No donor baseline wait or
+new architecture gate was added to S1/S2.
