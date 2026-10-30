@@ -15,6 +15,8 @@ import com.m57.hermescontrol.ui.chat.ChatViewModel
 import com.m57.hermescontrol.ui.chat.MessageRole
 import io.mockk.every
 import io.mockk.mockk
+import io.mockk.mockkStatic
+import io.mockk.unmockkStatic
 import io.mockk.verify
 import kotlinx.coroutines.flow.MutableStateFlow
 import org.junit.Assert.assertEquals
@@ -23,6 +25,7 @@ import org.junit.Assert.assertTrue
 import org.junit.Assume.assumeTrue
 import org.junit.Test
 import org.junit.runner.RunWith
+import java.util.concurrent.CountDownLatch
 import java.util.concurrent.LinkedBlockingQueue
 import java.util.concurrent.TimeUnit
 
@@ -146,6 +149,14 @@ class ExtensionBrokerTest {
                 initial.copy(baseUrl = "http://127.0.0.1:19120"),
             )
         for (changed in changedTargets) {
+            val hashing = CountDownLatch(1)
+            val releaseHash = CountDownLatch(1)
+            mockkStatic(::extensionPayloadHash)
+            every { extensionPayloadHash(any(), any()) } answers {
+                hashing.countDown()
+                check(releaseHash.await(5, TimeUnit.SECONDS))
+                callOriginal()
+            }
             val vm = mockk<ChatViewModel>(relaxed = true)
             var target = initial
             val state = MutableStateFlow(ChatUiState())
@@ -199,7 +210,9 @@ class ExtensionBrokerTest {
                                 null,
                             ).getString("status"),
                     )
+                    assertTrue("Import reached IO boundary", hashing.await(5, TimeUnit.SECONDS))
                     target = changed
+                    releaseHash.countDown()
                     assertEquals("REVOKED", ExtensionBroker.observe(uid, token, epoch).getString("status"))
                     assertEquals(
                         "REVOKED",
@@ -228,7 +241,9 @@ class ExtensionBrokerTest {
                 assertTrue("No stale DISPLAY or staging ACK", events.isEmpty())
                 verify(exactly = 0) { vm.stageExtensionDraft(any(), any(), any()) }
             } finally {
+                releaseHash.countDown()
                 main { ExtensionBroker.detach(vm) }
+                unmockkStatic(::extensionPayloadHash)
             }
         }
     }
