@@ -1,0 +1,39 @@
+name: hermes-s2-local
+services:
+  hermes:
+    build: .
+    image: hermes-s2-local:4d043038
+    init: true
+    ports:
+      - "127.0.0.1:19120:9119"
+    volumes:
+      - data:/data
+      - workspace:/workspace
+    secrets:
+      - openai_api_key
+      - dashboard_password
+      - dashboard_secret
+    read_only: true
+    tmpfs:
+      - /tmp:size=268435456,mode=1777
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    pids_limit: 256
+    cpus: 2.0
+    mem_limit: 4g
+    restart: "no"
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+secrets:
+  openai_api_key:
+    file: .local/openai_api_key
+  dashboard_password:
+    file: .local/dashboard_password
+  dashboard_secret:
+    file: .local/dashboard_secret
+volumes:
+  data:
+  workspace:

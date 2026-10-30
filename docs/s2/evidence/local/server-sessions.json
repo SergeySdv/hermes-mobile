@@ -1,0 +1,24 @@
+[
+  {
+    "id": "20261030_041608_88c901",
+    "model": "gpt-4.1-mini",
+    "message_count": 2,
+    "tool_call_count": 0,
+    "input_tokens": 12469,
+    "output_tokens": 82,
+    "api_call_count": 1,
+    "billing_provider": "openai-api",
+    "billing_base_url": "https://api.openai.com/v1"
+  },
+  {
+    "id": "20261030_041746_0b6e7e",
+    "model": "gpt-4.1-mini",
+    "message_count": 4,
+    "tool_call_count": 0,
+    "input_tokens": 24764,
+    "output_tokens": 57,
+    "api_call_count": 2,
+    "billing_provider": "openai-api",
+    "billing_base_url": "https://api.openai.com/v1"
+  }
+]

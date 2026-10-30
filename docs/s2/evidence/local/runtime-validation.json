@@ -1,0 +1,39 @@
+{
+  "result": "PASS",
+  "containerImage": "sha256:16aba8d5705080b2dee390ecb926cef38ff5fad56e623cd75efe666166bce558",
+  "running": true,
+  "user": "10000:10000",
+  "init": true,
+  "readOnlyRoot": true,
+  "capDrop": [
+    "ALL"
+  ],
+  "memoryBytes": 4294967296,
+  "nanoCpus": 2000000000,
+  "pidsLimit": 256,
+  "portBindings": {
+    "9119/tcp": [
+      {
+        "HostIp": "127.0.0.1",
+        "HostPort": "19120"
+      }
+    ]
+  },
+  "logConfig": {
+    "Type": "json-file",
+    "Config": {
+      "max-file": "3",
+      "max-size": "10m"
+    }
+  },
+  "mountDestinations": [
+    "/workspace",
+    "/run/secrets/openai_api_key",
+    "/run/secrets/dashboard_password",
+    "/run/secrets/dashboard_secret",
+    "/data"
+  ],
+  "apiKeyAbsentFromDockerConfigEnv": true,
+  "gatewayContractSha256": "248ce12519dcc1e830a15c5819c93e6d27ef18404d19da38c960570710f83d00",
+  "serverSha": "4d04303818b61bf3aa09278af48356315515965b"
+}

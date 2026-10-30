@@ -1,0 +1,30 @@
+#1 [internal] load local bake definitions
+#1 reading from stdin 559B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 682B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:3.14.0-slim-bookworm
+#3 ERROR: failed to do request: Head "https://registry-1.docker.io/v2/library/python/manifests/3.14.0-slim-bookworm": EOF
+------
+ > [internal] load metadata for docker.io/library/python:3.14.0-slim-bookworm:
+------
+Dockerfile:1
+
+--------------------
+
+   1 | >>> FROM python:3.14.0-slim-bookworm
+
+   2 |     LABEL org.opencontainers.image.revision="4d04303818b61bf3aa09278af48356315515965b"
+
+   3 |     WORKDIR /opt/hermes
+
+--------------------
+
+failed to solve: python:3.14.0-slim-bookworm: failed to resolve source metadata for docker.io/library/python:3.14.0-slim-bookworm: failed to do request: Head "https://registry-1.docker.io/v2/library/python/manifests/3.14.0-slim-bookworm": EOF
+
+
+
+View build details: docker-desktop://dashboard/build/default/default/rv3u2t5ej7hbdk9nm8ncfo2xu

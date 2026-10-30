@@ -1,0 +1,5 @@
+*
+!Dockerfile
+!entrypoint.py
+!.local/
+!.local/source.tar

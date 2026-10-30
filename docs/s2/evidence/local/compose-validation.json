@@ -1,0 +1,12 @@
+{
+  "result": "PASS",
+  "scope": "rendered Compose isolation configuration only; runtime not yet verified",
+  "loopback": "127.0.0.1:19120",
+  "cpu": 2,
+  "memoryBytes": "4294967296",
+  "pids": 256,
+  "namedVolumesOnly": true,
+  "rootFilesystemReadOnly": true,
+  "capabilitiesDropped": "ALL",
+  "secretsInEnvironment": false
+}

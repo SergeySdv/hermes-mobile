@@ -1,0 +1,17 @@
+{
+  "testedStandCommit": "5f4a853f36a4a3fab3c6d56b7cd0d9fe9518b3df",
+  "androidSourceCommit": "ea8ffa69",
+  "installedApkSha256": {
+    "com.m57.hermescontrol.dev": "270f3ab6245c990c8a95a0a062b74e4ce551d0c379bdfe5ebeb78806773d75b1",
+    "com.m57.hermes.extensiontest": "6e3f8f97e5587379ce77c827cc2dc1c40d009903fd333bfcd4e6fb54cafb99c8"
+  },
+  "device": "emulator-5554",
+  "api": 36,
+  "serverSourceSha": "4d04303818b61bf3aa09278af48356315515965b",
+  "provider": "openai-api",
+  "model": "gpt-4.1-mini",
+  "profile": "S2-local",
+  "url": "http://127.0.0.1:19120/",
+  "mockProfileRetainedAt": "http://127.0.0.1:19119/",
+  "result": "PASS \u2014 local S2 scenario only"
+}

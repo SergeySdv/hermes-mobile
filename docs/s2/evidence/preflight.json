@@ -1,0 +1,16 @@
+{
+  "checked_at": "2026-10-30T11:41:16.897677+08:00",
+  "device": "emulator-5554",
+  "api": "36",
+  "saved_profile_count": 1,
+  "only_profile_url": "http://127.0.0.1:19119/",
+  "real_backend_endpoint": "NOT_PROVIDED",
+  "real_backend_connectivity": "NOT_RUN: no selected endpoint",
+  "real_agent_request": "NOT_RUN",
+  "server_changes": false,
+  "mock_used_as_S2_result": false,
+  "apk_hashes": {
+    "com.m57.hermescontrol.dev": "270f3ab6245c990c8a95a0a062b74e4ce551d0c379bdfe5ebeb78806773d75b1",
+    "com.m57.hermes.extensiontest": "6e3f8f97e5587379ce77c827cc2dc1c40d009903fd333bfcd4e6fb54cafb99c8"
+  }
+}

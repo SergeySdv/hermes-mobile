@@ -1,0 +1,57 @@
+#1 [internal] load local bake definitions
+#1 reading from stdin 559B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 685B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:3.14.0-slim-bookworm
+#3 DONE 0.0s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 97B done
+#4 DONE 0.0s
+
+#5 [1/6] FROM docker.io/library/python:3.14.0-slim-bookworm
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 ...
+
+#7 [2/6] WORKDIR /opt/hermes
+#7 DONE 0.2s
+
+#6 [internal] load build context
+#6 transferring context: 248.54MB 2.0s done
+#6 DONE 2.0s
+
+#8 [3/6] ADD .local/source.tar /opt/hermes/
+#8 DONE 0.6s
+
+#9 [4/6] RUN python -m pm.build_env --source /opt/hermes --python /usr/local/bin/python     --out /opt/hermes/.venv --no-install-project --sealed --extra web
+#9 106.1 Preparing the isolated Hermes runtime…
+#9 106.3   → Installing Python dependencies…
+#9 108.8   ✓ Installing Python dependencies
+#9 109.3   → Installing Python dependencies…
+#9 234.0   ✓ Installing Python dependencies
+#9 234.1 /opt/hermes/.venv/bin/python
+#9 DONE 234.2s
+
+#10 [5/6] RUN mkdir -p /data /workspace && chown -R 10000:10000 /data /workspace
+#10 DONE 0.1s
+
+#11 [6/6] COPY entrypoint.py /opt/s2-entrypoint.py
+#11 DONE 0.1s
+
+#12 exporting to image
+#12 exporting layers
+#12 exporting layers 1.2s done
+#12 writing image sha256:16aba8d5705080b2dee390ecb926cef38ff5fad56e623cd75efe666166bce558 done
+#12 naming to docker.io/library/hermes-s2-local:4d043038
+#12 naming to docker.io/library/hermes-s2-local:4d043038 done
+#12 DONE 1.2s
+
+#13 resolving provenance for metadata file
+#13 DONE 0.0s
+ hermes-s2-local:4d043038  Built
