@@ -1,0 +1,153 @@
+> Task :addon:preBuild UP-TO-DATE
+> Task :addon:preDebugBuild UP-TO-DATE
+> Task :addon:mergeDebugJniLibFolders UP-TO-DATE
+> Task :addon:mergeDebugNativeLibs UP-TO-DATE
+> Task :addon:stripDebugDebugSymbols UP-TO-DATE
+> Task :addon:extractDebugNativeSymbolTables UP-TO-DATE
+> Task :addon:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :addon:checkDebugDuplicateClasses UP-TO-DATE
+> Task :addon:generateDebugResources
+> Task :addon:packageDebugResources
+> Task :addon:processDebugNavigationResources
+> Task :addon:javaPreCompileDebug UP-TO-DATE
+> Task :addon:mergeDebugArtProfile UP-TO-DATE
+> Task :addon:checkDebugAarMetadata UP-TO-DATE
+> Task :addon:mapDebugSourceSetPaths
+> Task :addon:compileDebugNavigationResources UP-TO-DATE
+> Task :addon:parseDebugLocalResources
+> Task :addon:mergeDebugResources
+> Task :addon:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :addon:extractDeepLinksDebug UP-TO-DATE
+> Task :addon:generateDebugRFile
+> Task :addon:processDebugMainManifest
+> Task :addon:processDebugManifest
+> Task :addon:processDebugManifestForPackage
+> Task :addon:compileDebugKotlin
+> Task :addon:compileDebugJavaWithJavac NO-SOURCE
+> Task :addon:extractProguardFiles UP-TO-DATE
+> Task :addon:processDebugJavaRes UP-TO-DATE
+> Task :addon:mergeDebugJavaResource UP-TO-DATE
+> Task :addon:mergeDebugStartupProfile UP-TO-DATE
+> Task :companion:preBuild UP-TO-DATE
+> Task :companion:preDebugBuild UP-TO-DATE
+> Task :companion:mergeDebugJniLibFolders UP-TO-DATE
+> Task :companion:mergeDebugNativeLibs UP-TO-DATE
+> Task :companion:stripDebugDebugSymbols UP-TO-DATE
+> Task :companion:extractDebugNativeSymbolTables UP-TO-DATE
+> Task :companion:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :companion:checkDebugDuplicateClasses UP-TO-DATE
+> Task :companion:generateDebugResources
+> Task :companion:packageDebugResources
+> Task :companion:processDebugNavigationResources
+> Task :companion:parseDebugLocalResources
+> Task :companion:generateDebugRFile
+> Task :addon:processDebugResources
+> Task :addon:expandDebugArtProfileWildcards
+> Task :addon:mergeDebugGeneratedProguardFiles UP-TO-DATE
+> Task :companion:compileDebugKotlin
+> Task :companion:javaPreCompileDebug UP-TO-DATE
+> Task :companion:compileDebugJavaWithJavac NO-SOURCE
+> Task :companion:mergeDebugArtProfile UP-TO-DATE
+> Task :companion:checkDebugAarMetadata UP-TO-DATE
+> Task :companion:mapDebugSourceSetPaths
+> Task :companion:compileDebugNavigationResources UP-TO-DATE
+> Task :companion:mergeDebugResources
+> Task :companion:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :companion:extractDeepLinksDebug UP-TO-DATE
+> Task :companion:processDebugMainManifest
+> Task :companion:processDebugManifest
+> Task :companion:processDebugManifestForPackage
+> Task :companion:processDebugResources
+> Task :companion:expandDebugArtProfileWildcards
+> Task :companion:extractProguardFiles UP-TO-DATE
+> Task :companion:mergeDebugGeneratedProguardFiles UP-TO-DATE
+> Task :companion:processDebugJavaRes UP-TO-DATE
+> Task :companion:mergeDebugJavaResource UP-TO-DATE
+> Task :companion:mergeDebugStartupProfile UP-TO-DATE
+> Task :companion:generateDebugAssets UP-TO-DATE
+> Task :companion:mergeDebugAssets UP-TO-DATE
+> Task :companion:compressDebugAssets UP-TO-DATE
+> Task :companion:extractDebugVersionControlInfo UP-TO-DATE
+> Task :companion:generateDebugLintVitalReportModel
+> Task :companion:lintVitalAnalyzeDebug
+> Task :companion:lintVitalReportDebug SKIPPED
+> Task :companion:lintVitalDebug SKIPPED
+> Task :companion:optimizeDebugResources
+> Task :companion:collectDebugDependencies UP-TO-DATE
+> Task :companion:sdkDebugDependencyData UP-TO-DATE
+> Task :companion:validateSigningDebug UP-TO-DATE
+> Task :companion:writeDebugAppMetadata UP-TO-DATE
+> Task :companion:writeDebugSigningConfigVersions UP-TO-DATE
+> Task :addon:generateDebugAssets UP-TO-DATE
+> Task :addon:extractDebugVersionControlInfo UP-TO-DATE
+> Task :addon:generateDebugLintVitalReportModel
+> Task :addon:minifyDebugWithR8
+> Task :addon:compileDebugArtProfile
+> Task :addon:lintVitalAnalyzeDebug
+> Task :addon:lintVitalReportDebug SKIPPED
+> Task :addon:lintVitalDebug SKIPPED
+> Task :addon:optimizeDebugResources
+> Task :addon:collectDebugDependencies UP-TO-DATE
+> Task :addon:sdkDebugDependencyData UP-TO-DATE
+> Task :addon:validateSigningDebug UP-TO-DATE
+> Task :addon:writeDebugAppMetadata UP-TO-DATE
+> Task :addon:writeDebugSigningConfigVersions UP-TO-DATE
+> Task :addon:bundleDebugClassesToRuntimeJar
+> Task :addon:bundleDebugClassesToCompileJar
+> Task :addon:preDebugUnitTestBuild UP-TO-DATE
+> Task :addon:compileDebugUnitTestKotlin
+> Task :addon:javaPreCompileDebugUnitTest UP-TO-DATE
+> Task :addon:compileDebugUnitTestJavaWithJavac NO-SOURCE
+> Task :addon:processDebugUnitTestJavaRes UP-TO-DATE
+> Task :addon:testDebugUnitTest
+> Task :addon:preDebugAndroidTestBuild SKIPPED
+> Task :companion:minifyDebugWithR8
+> Task :companion:compileDebugArtProfile
+> Task :addon:generateDebugAndroidTestLintModel
+> Task :addon:generateDebugLintReportModel
+> Task :addon:generateDebugUnitTestLintModel
+> Task :companion:packageDebug
+> Task :companion:createDebugApkListingFileRedirect UP-TO-DATE
+> Task :companion:assembleDebug
+> Task :addon:bundleCompanion
+> Task :addon:mergeDebugAssets
+> Task :addon:compressDebugAssets
+> Task :addon:packageDebug
+> Task :addon:createDebugApkListingFileRedirect UP-TO-DATE
+> Task :addon:assembleDebug
+> Task :addon:lintAnalyzeDebugAndroidTest
+> Task :addon:lintAnalyzeDebugUnitTest
+> Task :companion:bundleDebugClassesToCompileJar
+> Task :companion:preDebugAndroidTestBuild SKIPPED
+> Task :companion:generateDebugAndroidTestLintModel
+> Task :companion:generateDebugLintReportModel
+> Task :companion:preDebugUnitTestBuild UP-TO-DATE
+> Task :companion:generateDebugUnitTestLintModel
+> Task :companion:lintAnalyzeDebug
+> Task :companion:lintAnalyzeDebugAndroidTest
+> Task :companion:lintAnalyzeDebugUnitTest
+> Task :addon:lintAnalyzeDebug
+
+> Task :companion:lintReportDebug
+Wrote HTML report to file:///private/tmp/hermes-s3-hardware/hardware/rokid/companion/build/reports/lint-results-debug.html
+Wrote SARIF report to file:///private/tmp/hermes-s3-hardware/hardware/rokid/companion/build/reports/lint-results-debug.sarif
+
+> Task :companion:lintDebug
+
+> Task :addon:lintReportDebug
+Wrote HTML report to file:///private/tmp/hermes-s3-hardware/hardware/rokid/addon/build/reports/lint-results-debug.html
+Wrote SARIF report to file:///private/tmp/hermes-s3-hardware/hardware/rokid/addon/build/reports/lint-results-debug.sarif
+
+> Task :addon:lintDebug
+
+[Incubating] Problems report is available at: file:///private/tmp/hermes-s3-hardware/hardware/rokid/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.8.2/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 3s
+112 actionable tasks: 62 executed, 50 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.8.2/userguide/configuration_cache_enabling.html
