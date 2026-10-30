@@ -31,8 +31,8 @@ public class IpcBoundaryTest {
             assertEquals("REVOKED", broker.stageInput("invented", "epoch", "op", "text", null).getString("status"));
             assertEquals("REVOKED", broker.observe("invented", "epoch").getString("status"));
             assertEquals("REVOKED", broker.getOperationStatus("invented", "epoch", "op").getString("status"));
-            assertThrows(SecurityException.class, () -> broker.stageInput("invented", "epoch", "op",
-                new String(new char[40000]).replace('\0', 'x'), null));
+            assertEquals("LIMIT_EXCEEDED", broker.stageInput("invented", "epoch", "op",
+                new String(new char[40000]).replace('\0', 'x'), null).getString("status"));
             assertFalse(negotiated.containsKey("token"));
             assertFalse(negotiated.containsKey("session_id"));
             assertFalse(SignerTrust.matches(context.getPackageManager(), android.os.Process.myUid(),

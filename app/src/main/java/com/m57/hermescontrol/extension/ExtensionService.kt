@@ -31,6 +31,15 @@ class ExtensionService : Service() {
                 if (code in IBinder.FIRST_CALL_TRANSACTION..IBinder.LAST_CALL_TRANSACTION &&
                     data.dataSize() > 64 * 1024
                 ) {
+                    if (!ExtensionBroker.trusted(this@ExtensionService, Binder.getCallingUid())) {
+                        throw SecurityException("Untrusted extension")
+                    }
+                    // The five result-bearing v1 methods return a bounded failure receipt.
+                    if (code in IBinder.FIRST_CALL_TRANSACTION..IBinder.FIRST_CALL_TRANSACTION + 4 && reply != null) {
+                        reply.writeNoException()
+                        reply.writeTypedObject(ExtensionBroker.response("LIMIT_EXCEEDED"), 0)
+                        return true
+                    }
                     throw SecurityException("Extension metadata exceeds 64 KiB")
                 }
                 return super.onTransact(code, data, reply, flags)
