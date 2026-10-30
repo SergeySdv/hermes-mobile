@@ -1,4 +1,4 @@
-# Isolated S2 local Hermes (work in progress)
+# Isolated S2 local Hermes (verified local S2)
 
 This uses the real, unmodified Hermes gateway, not the S1 mock. Server source is
 pinned to Android's gateway contract SHA
@@ -38,8 +38,8 @@ file (do not paste into chat, command arguments or reports). Keep the existing
 ```
 
 The host endpoint in Android is `http://127.0.0.1:19120/`. No application release
-policy changes are required. API login, image delivery, model response and
-history remain NOT_RUN until actual evidence is recorded in `docs/s2/REPORT.md`.
+policy changes are required. API login, image delivery, model response and history were verified on the
+approved emulator; see `docs/s2/REPORT.md` for the exact scope and evidence.
 
 ## Isolation and lifecycle
 

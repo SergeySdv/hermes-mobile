@@ -1,0 +1,7 @@
+{
+  "originalUserTurn": true,
+  "originalAssistantTurn": true,
+  "followUpUserTurn": true,
+  "followUpAssistantTurn": true,
+  "imageAttachment": true
+}

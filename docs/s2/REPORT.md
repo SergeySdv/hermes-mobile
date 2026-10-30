@@ -1,73 +1,81 @@
-# S2 real-backend validation — blocked at connection preflight
+# S2 — real local Hermes round-trip verified
 
-Status: **BLOCKED — real endpoint / existing login context not supplied**.
-This is not a failed server connection or an agent response, and is independent
-of donor baseline. No mock response is counted as S2 evidence.
+Status: **local S2 scenario PASS; review pending**. This does not change G0,
+which remains BLOCKED, or establish release readiness / remote HTTPS / Rokid
+hardware compatibility. No merge performed. PR #4 remains a Draft dependent on
+S1 PR #3 (`feat/s1-extension-ipc`); its diff contains only S2 work.
 
-Branch `feat/s2-real-backend` is stacked on `feat/s1-extension-ipc` at `823ef34b`
-(PR #3, still OPEN). This PR targets that branch, so its diff contains only S2
-work. After S1 merges, retarget/rebase S2 onto main without duplicating S1.
-No merge is performed by the agent.
+## Tested versions and environment
 
-## Observed prerequisite
+- Stand implementation commit: `5f4a853f`.
+- Unmodified server source: `4d04303818b61bf3aa09278af48356315515965b`, matching
+  Android's gateway contract snapshot byte for byte. Contract SHA-256:
+  `248ce12519dcc1e830a15c5819c93e6d27ef18404d19da38c960570710f83d00`.
+- Android application source: `ea8ffa69`; the installed APK pair was pulled
+  back from `emulator-5554` and hashed again. See [provenance](evidence/local/provenance.json).
+  No Android code, transport, auth, history, or release configuration changed.
+- Docker Desktop 4.49.0 / Engine 28.5.1 / Compose 2.40.2, linux/arm64.
+  Mac: 12 CPUs / 64 GiB RAM; Docker: 10 CPUs / approximately 15.6 GiB RAM.
+- Container `hermes-s2-local-hermes-1`, separate data/workspace volumes,
+  `127.0.0.1:19120` only, adb reverse to Android 16 / API 36 emulator.
+  Existing mock profile on 19119 retained separately.
+- Model `gpt-4.1-mini`, provider `openai-api`, actual endpoint
+  `https://api.openai.com/v1`. Owner entered the API key locally with hidden
+  input. Separate random test dashboard credentials; no secrets in git or APK.
 
-On the authorized `emulator-5554` (Android 16 / API 36), Hermes Settings →
-Connection shows **Saved Profiles (1)**. Its only endpoint is
-`http://127.0.0.1:19119/`, the S1 host mock. This was checked through the actual
-running UI; [screenshot](evidence/connection-profile.png),
-[hierarchy](evidence/connection-profile.xml) and
-[preflight + installed APK hashes](evidence/preflight.json) are preserved.
-No second real connection was available to select. Project baseline inventory
-also leaves the real backend version/profile UNKNOWN. No real endpoint was
-specified in the current task. Secrets were not read from encrypted preferences.
+[Launch instructions](../../infra/hermes-s2-local/README.md),
+[successful build log](evidence/local/build-success.log),
+[runtime isolation checks](evidence/local/runtime-validation.json).
 
-Missing condition: identify the already agreed real Hermes URL and the existing
-connection profile/login method usable from this emulator, or complete normal
-Hermes login on this emulator. Do not paste credentials into public reports/PRs.
-An asynchronous question was sent to the owner for this information. No answer
-was substituted with a guessed host, SSH access or changes to server auth.
+## Requirement → concrete check → observed result
 
-Real endpoint connectivity, image/model compatibility, agent round-trip,
-follow-up and history reopening are all **NOT_RUN** until that prerequisite is
-met. An unavailable configuration does not establish a network/server failure.
+| Requirement | Check / evidence | Actual result |
+|---|---|---|
+| Real Hermes independent of add-on | Ordinary core login and text Send; [UI](evidence/local/ui/01-hermes-direct-answer.png) | PASS: server accepted the request; returned `S2_SERVER_OK` plus initial onboarding greeting. One recorded agent API call, zero tool calls. |
+| Matching real interface and auth | Exact contract hash; public `/api/status`; normal username/password login in Android | PASS: basic provider advertised; normal cookie/ticket path reached a new real conversation. No injected session, bypass or mock client. |
+| Photo/text → IPC → existing composer | Harness synthetic JPEG, scoped permission, Binder staging; [composer](evidence/local/ui/02-ipc-composer.png) | PASS: exact harmless prompt and one image appeared in existing composer; existing Send was pressed explicitly. |
+| Actual image-aware answer in both apps | [Hermes](evidence/local/ui/03-hermes-image-answer.png), [add-on](evidence/local/ui/04-addon-image-answer.png) | PASS: same real model text described a central blue square on a gray background. This verifies transport/display, not model visual accuracy. |
+| Continuation without a second chat/transport | Follow-up typed and sent in Hermes; [Hermes](evidence/local/ui/05-hermes-follow-up.png), [add-on](evidence/local/ui/06-addon-follow-up.png) | PASS: both displayed `The blue shape in the image above was a square.` |
+| Existing history survives leaving/reopening | Existing History list, same conversation reopened; [list](evidence/local/ui/07-history-list.png), [reopened](evidence/local/ui/08-reopened-history.png), [assertions](evidence/local/history-check.json) | PASS: two user turns, two assistant turns and JPEG representation present. |
+| Real server persistence / no external actions | Read-only query of this new container's `state.db`; [metadata](evidence/local/server-sessions.json) | PASS: image conversation has 4 messages, 2 agent API calls, provider `openai-api`, 0 tool calls. Separate direct-text conversation has 2 messages / 1 call / 0 tools. These counters are not a complete billing audit of auxiliary calls. |
+| Isolated local runtime | Rendered Compose checks and running-container inspection | PASS: nonroot UID 10000, init, read-only root, dropped capabilities, no-new-privileges configuration, 2 CPUs / 4 GiB / 256 PIDs, bounded logs, only private volumes + read-only secret mounts; loopback binding verified. |
+| S1 trust/dedup/limits/regressions | Existing [S1 requirement matrix](../s1/REPORT.md) | Reused existing evidence; not rerun or reclassified as S2 tests. |
 
-## Fixed continuation on the existing client
+Each UI screenshot has a sibling XML hierarchy. History assertions inspect both
+text and content descriptions: the JPEG filename is an accessibility description,
+not a text node. The first text-only attachment assertion was too narrow; the
+saved hierarchy confirms the attachment and the corrected assertion passes.
+No pre-send server counter snapshot was taken for S2; the stronger zero-pre-send
+counter assertion remains in existing S1 evidence, not a newly claimed S2 result.
 
-Production Android source: `ea8ffa69`; APK pair is the unchanged S1 pair:
+## Boundaries and observations
 
-- Hermes SHA-256: `270f3ab6245c990c8a95a0a062b74e4ce551d0c379bdfe5ebeb78806773d75b1`.
-- Test add-on SHA-256: `6e3f8f97e5587379ce77c827cc2dc1c40d009903fd333bfcd4e6fb54cafb99c8`.
-- Local files: `/Users/sergei/Downloads/hermes-s1-ea8ffa69/`.
+The initial Docker registry requests failed (IPv6 socket/EOF), preserved in
+[the failed build log](evidence/local/build-registry-failure.log). The same
+Python 3.14.0 linux/arm64 base was downloaded over host IPv4, each manifest/blob
+SHA-256 verified, and imported into Docker's cache. [Digests](evidence/local/base-image.json)
+and [download result](evidence/local/base-fetch.log) are preserved. No system
+network settings or other containers changed. The subsequent frozen dependency
+build completed. A cold build still needs working registry access; the verified
+base is cached on this Mac.
 
-Once the real connection is selected through existing Hermes UI:
+The minimal headless image intentionally lacks ffmpeg/node/npm/ripgrep; Hermes
+reports those optional runtime tools as out of sync. They were not invoked by
+these prompts. This image is scoped to the tested chat/image path, not general
+agent tool execution. The server reports its version as `unknown` because the
+build uses a source archive without `.git`; the exact source SHA and resulting
+image ID are recorded independently. The automatically generated conversation
+title mentions a gradient, although the synthetic image is blue on gray; no
+claim about title/model accuracy is made.
 
-1. Use existing Test Connection and record success/error without credentials.
-   Confirm the selected profile is the agreed real endpoint, not port 19119.
-2. Create one test conversation in Hermes, grant the harness access to that
-   conversation, select its synthetic grey/blue JPEG and stage this text:
-   “Describe only the visible colors and shapes in this synthetic image.
-   Reply in chat only. Do not use tools, modify files or take external actions.”
-3. Confirm the actual attachment and text in the existing composer. Until
-   explicit Send there must be no agent turn. Press existing Send once.
-4. Record the real agent answer in Hermes and the same permitted text in the
-   harness. Do not equate a streaming answer with durable storage success.
-5. Return to Hermes and manually ask: “Which shape was blue in the image
-   above? Answer from this conversation only; do not use tools or take actions.”
-   Record the continuation answer in both applications.
-6. Leave the conversation and reopen it through existing History. Verify both
-   user turns, original attachment representation and both real answers remain
-   associated with the same conversation. Inspect existing errors/pending
-   receipts rather than inventing history or bypassing reconciliation.
-7. Preserve sanitized screenshots, observed turn counts/receipts, selected
-   profile identity (no secrets), app/device versions and APK hashes. On failure,
-   capture the exact ordinary-client error and the first failing step.
+The stand remains running for review. No production VPS, Caddy, Telegram,
+OpenViking, existing container, personal device, signing material or historical
+G0 evidence was modified. No Android Studio delegation was needed. The failed
+`adb root` diagnostic reported a production emulator image; no elevated emulator
+access was obtained or needed. No full upstream Hermes test suite was run.
 
-No second chat, history, auth layer, network client or backend shim is required.
-The synthetic photo already exists in the harness. adb UI control is available;
-no Android Studio delegation was launched or needed. A tool/approval request
-would not be approved as part of this harmless test.
+## Preserved earlier evidence
 
-No VPS/Caddy/container/auth/Telegram changes, personal-device installation or
-hardware action was made. Rokid hardware and production readiness remain
-unverified; historical G0 remains BLOCKED. S1 review and S2 connection setup do
-not need to wait for donor baseline or a new architecture cycle.
+The initial missing-connection blocker is superseded by the owner's authorization
+of this isolated local stand. Its original narrative is preserved in
+[PREFLIGHT.md](PREFLIGHT.md), with the original preflight JSON/screenshots intact.
