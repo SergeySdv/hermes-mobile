@@ -79,3 +79,42 @@ access was obtained or needed. No full upstream Hermes test suite was run.
 The initial missing-connection blocker is superseded by the owner's authorization
 of this isolated local stand. Its original narrative is preserved in
 [PREFLIGHT.md](PREFLIGHT.md), with the original preflight JSON/screenshots intact.
+
+## Review audit before S3
+
+The audit started at `acf5245b75c859bb7fe6148a02e7e1c550c8052c`, matching
+PR #4, with a clean working tree. Android APK-producing sources and build
+configuration have no differences from the tested `ea8ffa69` source. The
+published APKs therefore remain the tested binaries; this audit adds evidence
+and documentation, not a new Android build.
+
+- Core APK SHA-256: `270f3ab6245c990c8a95a0a062b74e4ce551d0c379bdfe5ebeb78806773d75b1`.
+- Test add-on APK SHA-256: `6e3f8f97e5587379ce77c827cc2dc1c40d009903fd333bfcd4e6fb54cafb99c8`.
+- Running server image: `sha256:16aba8d5705080b2dee390ecb926cef38ff5fad56e623cd75efe666166bce558`.
+- A comparison of all 20,688 tracked regular upstream files against the pinned
+  clean server checkout found zero mismatches in the running container:
+  [comparison result](evidence/review-audit/server-source-comparison.json).
+  `/opt/s2-entrypoint.py` is the separate local configuration/launch wrapper;
+  there are no upstream server patches requiring additional function tests.
+
+Image receipt evidence is the staged JPEG, ordinary image-upload/send path,
+image-specific real response, subsequent context-aware response, and persisted
+conversation metadata linked above. The prompt did not disclose the pictured
+colors or shape. This is end-to-end behavioral evidence, **not a captured OpenAI
+request body or independent provider-side attestation**. The database counters
+alone do not prove that image bytes reached the model. No provider payload or
+secret was dumped to strengthen that claim.
+
+The remaining Python terminal (session `25895`, PID `71423` at inspection) is
+`mock_gateway.py`, with working directory `/private/tmp/hermes-s1`. It is the
+intentionally retained S1 server on port 19119, not a hung one-shot S2 script.
+It is still running and therefore has no exit status yet. It was left running;
+no unrelated process was stopped. Completed S2 UI runs exited zero; the earlier
+attachment assertion failure and its correction remain disclosed above.
+
+Physical-phone repetition belongs to S3 evidence and does not retroactively
+change this emulator result. The owner separately authorized installation of
+these two exact APKs on OnePlus Open CPH2551 (`a8bf1333`) through USB ADB.
+Both installs succeeded and a device-specific reverse for port 19120 was set.
+At the initial UI check the phone was locked; hardware UI success is not yet
+claimed. Rokid installation remains separately gated by owner approval.
