@@ -1,0 +1,5 @@
+{
+  "attempt": 2,
+  "elapsed_observation_seconds": 7.5,
+  "status": "Authorization: AUTHORIZED\nCXR: true; Bluetooth: true\nInstallation: INSTALL_FAILED\nLaunch: NOT_RUN\nDisplay: CONNECTION_OR_SCENE_LOST\n"
+}

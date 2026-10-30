@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.m57.hermes.rokid.protocol.TextProtocolTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-10-30T05:47:23.817Z" hostname="Sergeis-MacBook-Pro.local" time="0.014">
+  <properties/>
+  <testcase name="staleAndDuplicateAcknowledgementsDoNotChangeCurrentOperation" classname="com.m57.hermes.rokid.protocol.TextProtocolTest" time="0.004"/>
+  <testcase name="timeoutCannotBecomeSuccessFromLateAck" classname="com.m57.hermes.rokid.protocol.TextProtocolTest" time="0.0"/>
+  <testcase name="ackIsNotPhysicalDisplayProof" classname="com.m57.hermes.rokid.protocol.TextProtocolTest" time="0.0"/>
+  <testcase name="rejectsUtf8Overflow" classname="com.m57.hermes.rokid.protocol.TextProtocolTest" time="0.007"/>
+  <testcase name="acceptsExactUtf8Limit" classname="com.m57.hermes.rokid.protocol.TextProtocolTest" time="0.0"/>
+  <testcase name="staleTimeoutDoesNotInvalidateNewOperation" classname="com.m57.hermes.rokid.protocol.TextProtocolTest" time="0.0"/>
+  <testcase name="rejectsVersionAndMalformedFrame" classname="com.m57.hermes.rokid.protocol.TextProtocolTest" time="0.0"/>
+  <testcase name="lateAckAfterDisconnectCannotRestoreSuccess" classname="com.m57.hermes.rokid.protocol.TextProtocolTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,32 @@
+{
+  "addon": {
+    "package": "com.m57.hermes.rokid.addon.debug",
+    "version": "0.1-s3-probe",
+    "version_code": 1,
+    "sha256": "c2dbe0211c8d27d95cafdb9c59e8a013e0a08db9baa50a57fb2599378aa318c8",
+    "signer_sha256": "be7558a33ba6253842b260a780f3c1977f563df12cf00ce5576b46fdb3e1b021",
+    "bytes": 3824948,
+    "abis": [
+      "arm64-v8a",
+      "armeabi-v7a"
+    ],
+    "dex_files": 1,
+    "android_permissions": [],
+    "logging_sink_audit": "PASS"
+  },
+  "companion": {
+    "package": "com.m57.hermes.rokid.glasses.debug",
+    "version": "0.1-s3-probe",
+    "version_code": 1,
+    "sha256": "de30616050690023c1ca26723b2509a0e1a67fe4451299e60b8fd64d81f12eb0",
+    "signer_sha256": "be7558a33ba6253842b260a780f3c1977f563df12cf00ce5576b46fdb3e1b021",
+    "bytes": 2552744,
+    "abis": [
+      "arm64-v8a",
+      "armeabi-v7a"
+    ],
+    "dex_files": 1,
+    "android_permissions": [],
+    "logging_sink_audit": "PASS"
+  }
+}
