@@ -9,14 +9,17 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.m57.hermes.extension.IExtensionCallback
 import com.m57.hermescontrol.BuildConfig
 import com.m57.hermescontrol.ui.chat.ChatAttachmentTarget
+import com.m57.hermescontrol.ui.chat.ChatMessage
 import com.m57.hermescontrol.ui.chat.ChatUiState
 import com.m57.hermescontrol.ui.chat.ChatViewModel
+import com.m57.hermescontrol.ui.chat.MessageRole
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
 import kotlinx.coroutines.flow.MutableStateFlow
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
 import org.junit.Assume.assumeTrue
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -127,6 +130,106 @@ class ExtensionBrokerTest {
             verify(exactly = 1) { vm.stageExtensionDraft(any(), any(), any()) }
         } finally {
             main { ExtensionBroker.detach(vm) }
+        }
+    }
+
+    @Test fun profileAndConversationSwitchDiscardInFlightDraftAndQueuedDisplay() {
+        assumeTrue("Requires the opt-in signed S1 harness", BuildConfig.EXTENSION_TEST_SIGNER.isNotEmpty())
+        val context = ApplicationProvider.getApplicationContext<Context>()
+        val uid = context.packageManager.getApplicationInfo(ExtensionBroker.TEST_PACKAGE, 0).uid
+        val initial = ChatAttachmentTarget("conversation-a", 1, "http://127.0.0.1:19119", "connection-a", "agent-a")
+        val changedTargets =
+            listOf(
+                initial.copy(sessionId = "conversation-b"),
+                initial.copy(connectionProfileId = "connection-b"),
+                initial.copy(agentProfileId = "agent-b"),
+                initial.copy(baseUrl = "http://127.0.0.1:19120"),
+            )
+        for (changed in changedTargets) {
+            val vm = mockk<ChatViewModel>(relaxed = true)
+            var target = initial
+            val state = MutableStateFlow(ChatUiState())
+            every { vm.captureAttachmentTarget() } answers { target }
+            every { vm.uiState } returns state
+            every { vm.stageExtensionDraft(any(), any(), any()) } returns true
+            val events = LinkedBlockingQueue<Bundle>()
+            val callback =
+                object : IExtensionCallback.Stub() {
+                    override fun onEvent(event: Bundle) {
+                        events.offer(event)
+                    }
+                }
+            try {
+                main {
+                    ExtensionBroker.revoke()
+                    ExtensionBroker.attach(vm)
+                    assertEquals(
+                        "AWAITING_USER",
+                        ExtensionBroker.open(context, uid, 1, 3, callback).getString("status"),
+                    )
+                    ExtensionBroker.approve(true, true)
+                }
+                val granted = requireNotNull(events.poll(5, TimeUnit.SECONDS))
+                assertEquals("GRANTED", granted.getString("status"))
+                val token = requireNotNull(granted.getString("grant"))
+                val epoch = requireNotNull(granted.getString("epoch"))
+                var pendingClient: Any? = null
+                main {
+                    assertEquals("OK", ExtensionBroker.observe(uid, token, epoch).getString("status"))
+                    ExtensionBroker.userConfirmed()
+                    state.value =
+                        ChatUiState(messages = listOf(ChatMessage(role = MessageRole.ASSISTANT, content = "old scope")))
+                    val field = ExtensionBroker.javaClass.getDeclaredField("client").apply { isAccessible = true }
+                    pendingClient = requireNotNull(field.get(ExtensionBroker))
+                    // Queue output while still authorized; IO delivery must recheck the scope after this main turn.
+                    ExtensionBroker.javaClass
+                        .getDeclaredMethod("publish", pendingClient!!.javaClass)
+                        .apply { isAccessible = true }
+                        .invoke(ExtensionBroker, pendingClient)
+                    assertEquals(
+                        "UNKNOWN",
+                        ExtensionBroker
+                            .stage(
+                                context,
+                                uid,
+                                token,
+                                epoch,
+                                "in-flight",
+                                "old draft",
+                                null,
+                            ).getString("status"),
+                    )
+                    target = changed
+                    assertEquals("REVOKED", ExtensionBroker.observe(uid, token, epoch).getString("status"))
+                    assertEquals(
+                        "REVOKED",
+                        ExtensionBroker
+                            .stage(
+                                context,
+                                uid,
+                                token,
+                                epoch,
+                                "late",
+                                "late draft",
+                                null,
+                            ).getString("status"),
+                    )
+                }
+                val busy = pendingClient!!.javaClass.getDeclaredField("busy").apply { isAccessible = true }
+                val deadline = SystemClock.elapsedRealtime() + 5000
+                var importing = true
+                while (importing && SystemClock.elapsedRealtime() < deadline) {
+                    main { importing = busy.getBoolean(pendingClient) }
+                    if (importing) Thread.sleep(10)
+                }
+                assertFalse("In-flight import must finish", importing)
+                val revoked = requireNotNull(events.poll(5, TimeUnit.SECONDS))
+                assertEquals("REVOKED", revoked.getString("status"))
+                assertTrue("No stale DISPLAY or staging ACK", events.isEmpty())
+                verify(exactly = 0) { vm.stageExtensionDraft(any(), any(), any()) }
+            } finally {
+                main { ExtensionBroker.detach(vm) }
+            }
         }
     }
 }
