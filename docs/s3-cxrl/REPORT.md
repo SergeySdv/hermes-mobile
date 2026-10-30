@@ -50,3 +50,28 @@ Local artifact directory: `/Users/sergei/Downloads/hermes-s3-57820d27/`. Neither
 - [Build/provenance/install instructions](../../hardware/rokid/README.md)
 
 After approval, install these exact APKs and record each hardware stage independently. A view-update ack is not physical display proof. If text succeeds, implement real JPEG capture/preview and then existing IPC; unchanged IPC image limits, no hidden compression, no new chat/auth/backend client.
+
+## Physical phone attempt and S3-AUTH-01 fix
+
+Owner approved original pair. USB install of original add-on on OnePlus user 0
+exited 0 (Success), package previously absent; activity launched. No companion
+installation or firmware change occurred. Authorization button showed a false
+negative before calling Hi Rokid. UI evidence:
+[precondition failure](evidence/device-first-install/authorization-precondition.xml).
+
+Root cause in our code: `isConnectHiRokid()` initially returns false and is set by
+`requestAuthorization()`, not `isRequiredHiRokidInstalled()`. Verified against
+SDK 1.0.3 bytecode. Global installed versionCode 10150006 exceeds the SDK's
+Global threshold 10070014; this does not prove full hardware compatibility.
+
+Fix source commit `4f7dc0bb`: preflight requires Global present and compatible CN
+absent (SDK otherwise prioritizes CN); selected Global route checked after auth
+result. No update to Hi Rokid required. Build/unit task/lint exited 0; tests used
+cache, APK audit re-executed PASS. New runtime validation pending installation.
+
+Replacement add-on: `/Users/sergei/Downloads/hermes-s3-4f7dc0bb/addon-debug.apk`.
+SHA-256 `f8b61e245bb810572be05dae5c6ab8b59de53a88564914de71fd2a85261da685`.
+Same package, version, certificate and permissions. Companion bytes unchanged.
+Replacement installation pending approval because prior approval named exact APKs.
+[Updated audit](evidence/device-first-install/fixed-apk-audit.json),
+[build log](evidence/device-first-install/fixed-build.log).
