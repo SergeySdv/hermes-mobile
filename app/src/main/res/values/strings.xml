@@ -2064,4 +2064,11 @@
     <string name="db_unavailable_retry">Retry</string>
     <string name="db_unavailable_reset">Move aside and start fresh</string>
     <string name="db_unavailable_reset_confirm">The database files will be renamed with a .corrupt suffix, not deleted. Local chat history will start empty.</string>
+    <string name="extension_consent_title">Allow extension for this conversation?</string>
+    <string name="extension_consent_duration">Up to 15 minutes. Sending always requires confirmation in Hermes.</string>
+    <string name="extension_draft_permission">Add text and photos to draft</string>
+    <string name="extension_display_permission">Display new assistant responses</string>
+    <string name="extension_allow">Allow</string>
+    <string name="extension_deny">Deny</string>
+    <string name="extension_revoke">Revoke extension</string>
 </resources>

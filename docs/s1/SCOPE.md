@@ -21,6 +21,7 @@ failure tests; debug APK builds; existing client checks; emulator execution with
 recorded backend type and observed results. Mock evidence must be labelled as
 such and cannot establish production or Rokid hardware compatibility.
 
-The requested Hermes-Rokid-S1-Implementation-and-Studio-Handoff.md has not yet
-been located. Read and reconcile it before implementing its dependent protocol.
+The owner-provided [S1 handoff](../../hermes-rokid-implementation-plan/Hermes-Rokid-S1-Implementation-and-Studio-Handoff.md) defines scope and UI checks.
+IPC follows ADR-003 and specs/03-CONTRACTS.md from architecture PR #2 at d044d1c7;
+S1 is the explicit limited exception to its pre-acceptance implementation prohibition.
 The implementation PR is separate from architecture PR #2 and T00 continuation.

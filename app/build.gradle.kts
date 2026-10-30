@@ -19,6 +19,7 @@ android {
     compileSdk = 37
     buildToolsVersion = "37.0.0"
     defaultConfig {
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         applicationId = "com.m57.hermescontrol"
         minSdk = 26
         targetSdk = 37
@@ -87,6 +88,9 @@ android {
     buildTypes {
         debug {
             applicationIdSuffix = ".dev"
+            val harnessSigner = providers.gradleProperty("s1HarnessSigner").orNull.orEmpty()
+            require(harnessSigner.isEmpty() || harnessSigner.matches(Regex("[a-fA-F0-9]{64}")))
+            buildConfigField("String", "EXTENSION_TEST_SIGNER", "\"$harnessSigner\"")
             versionNameSuffix = "-dev"
 
             buildConfigField("boolean", "ALLOW_CLEARTEXT", "true")
@@ -94,6 +98,7 @@ android {
         }
 
         release {
+            buildConfigField("String", "EXTENSION_TEST_SIGNER", "\"\"")
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(
@@ -154,6 +159,7 @@ room3 {
 }
 
 dependencies {
+    implementation(project(":extension-contract"))
     val composeBom = platform(libs.androidx.compose.bom)
     implementation(composeBom)
     androidTestImplementation(composeBom)
