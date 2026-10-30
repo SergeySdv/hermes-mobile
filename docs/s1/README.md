@@ -107,5 +107,7 @@ Android widgets and synthetic media, not a second chat interface.
 Review slow-callback/flood behavior and cache retention before broadening the
 prototype. Projection currently covers live streaming assistant rows only;
 REST-only completion and complex assistant/tool flows require further tests.
+The fixture omits durable history, so a pending receipt may remain after the
+streamed answer; this does not establish server reconciliation.
 Full instrumentation regression and CI are separate from the targeted emulator
 checks. APKs, keystores and personal data must not be committed as evidence.

@@ -1,0 +1,6 @@
+
+com.m57.hermes.extensiontest.IpcBoundaryTest:.
+
+Time: 0.891
+
+OK (1 test)
