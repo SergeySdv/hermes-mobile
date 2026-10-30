@@ -44,12 +44,15 @@ class MainActivity : Activity() {
             )
         }
         button("1. Authorize with Hi Rokid Global") {
-            if (AuthorizationHelper.isRequiredHiRokidInstalled(this) && AuthorizationHelper.isConnectHiRokid()) {
+            // S3-AUTH-01: isConnectHiRokid is set by requestAuthorization, not discovery.
+            if (AuthorizationHelper.isRequiredHiRokidInstalled(this) &&
+                !AuthorizationHelper.isRequiredRokidAppInstalled(this)
+            ) {
                 AuthorizationHelper.requestAuthorization(this, arrayOf(GlassPermission.CAMERA), 1001)?.let {
                     accept(it.first, it.second)
                 }
             } else {
-                status.text = "Compatible Hi Rokid Global not found"
+                status.text = "Hi Rokid Global missing, too old, or CN app also present"
             }
         }
         button("Disconnect / reset authorization") { probe.reset() }
@@ -106,6 +109,7 @@ class MainActivity : Activity() {
         data: Intent?,
     ) {
         val result = AuthorizationHelper.parseAuthorizationResult(code, data)
-        probe.authorized((result as? AuthResult.AuthSuccess)?.token)
+        val token = (result as? AuthResult.AuthSuccess)?.token
+        probe.authorized(token?.takeIf { AuthorizationHelper.isConnectHiRokid() })
     }
 }
