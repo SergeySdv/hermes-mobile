@@ -1,0 +1,8 @@
+
+PASS: ordinary Hermes text send with harness stopped
+Package com.m57.hermes.extensiontest new state: disabled-user
+
+PASS: ordinary Hermes text send with harness disabled
+Success
+
+PASS: ordinary Hermes text send with harness uninstalled

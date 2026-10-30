@@ -1,0 +1,10 @@
+{
+  "base": "a00d7b44",
+  "implementation": "ea8ffa69",
+  "transport_paths": [
+    "app/src/main/java/com/m57/hermescontrol/data/remote",
+    "app/src/main/java/com/m57/hermescontrol/data/ws"
+  ],
+  "changed_files": [],
+  "mock_location": "scripts/s1/mock_gateway.py (host-only)"
+}

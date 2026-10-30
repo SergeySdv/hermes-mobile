@@ -98,6 +98,9 @@ import com.m57.hermescontrol.data.ws.ConnectionStatus
 import com.m57.hermescontrol.data.ws.HermesWsClient
 import com.m57.hermescontrol.data.ws.contract.RpcMethods
 import com.m57.hermescontrol.data.ws.contract.SessionExportParams
+import com.m57.hermescontrol.extension.ExtensionBroker
+import com.m57.hermescontrol.extension.ExtensionConsent
+import com.m57.hermescontrol.extension.ExtensionRevokeAction
 import com.m57.hermescontrol.notification.NotificationHelper
 import com.m57.hermescontrol.profilelock.ProfileLock
 import com.m57.hermescontrol.share.ShareInbox
@@ -189,6 +192,7 @@ fun ChatScreen(
     viewModel: ChatViewModel = viewModel(),
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
+    ExtensionConsent(viewModel, state.chatTitle)
     val profileLocked =
         ProfileLock.state
             .collectAsStateWithLifecycle()
@@ -610,6 +614,7 @@ fun ChatScreen(
             }
         },
         actions = {
+            ExtensionRevokeAction()
             IconButton(onClick = { viewModel.createNewSession() }) {
                 Icon(
                     imageVector = Icons.Filled.Add,
@@ -1062,6 +1067,7 @@ fun ChatScreen(
                 isReceivingContent = imagePaste.isReceiving,
                 onSend = {
                     if (!imagePaste.isReceiving && viewModel.sendMessage(inputState.text.toString())) {
+                        ExtensionBroker.userConfirmed()
                         composerDraft.accepted()
                         // Jump only after an accepted send. A readiness race keeps the draft intact.
                         scrollController.jumpToBottom(animated = true)

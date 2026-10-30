@@ -1,0 +1,11 @@
+{
+  "result": "PASS",
+  "release_class_count": 5173,
+  "debug": false,
+  "test_signer": "",
+  "trust_method": "constant false",
+  "harness_classes_and_mock_markers": "absent",
+  "build_git_sha": "52e245f",
+  "build_config_class_sha256": "0c0a8f4c5790fe064f75c71792aa7d8a40553ed3b71c55b4530110d0f5b2d9d3",
+  "broker_class_sha256": "3557f99b7148233ea0eff3b99a6f51d9f354f16d4871e89b3d4e773cf2a26298"
+}

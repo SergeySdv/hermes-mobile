@@ -1,0 +1,14 @@
+{
+  "before": {
+    "image.attach_bytes": 4,
+    "prompt.submit": 10
+  },
+  "staged": {
+    "image.attach_bytes": 4,
+    "prompt.submit": 10
+  },
+  "sent": {
+    "image.attach_bytes": 5,
+    "prompt.submit": 11
+  }
+}

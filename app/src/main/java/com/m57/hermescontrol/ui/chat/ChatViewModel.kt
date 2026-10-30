@@ -4252,6 +4252,37 @@ class ChatViewModel(
         )
     }
 
+    /** S1: fenced staging into the existing composer, never a send or a new conversation. */
+    internal fun stageExtensionDraft(
+        target: ChatAttachmentTarget,
+        text: String,
+        photo: java.io.File?,
+    ): Boolean {
+        if (captureAttachmentTarget() != target) return false
+        val attachments =
+            photo
+                ?.let { file ->
+                    val context = getApplication<Application>()
+                    listOf(
+                        Attachment(
+                            uri =
+                                androidx.core.content.FileProvider
+                                    .getUriForFile(
+                                        context,
+                                        "${context.packageName}.fileprovider",
+                                        file,
+                                    ).toString(),
+                            name = "extension-photo.jpg",
+                            mimeType = "image/jpeg",
+                            size = file.length(),
+                            sendOriginal = true,
+                        ),
+                    )
+                }.orEmpty()
+        applySharedContent(IncomingShare(text = text.takeIf { it.isNotEmpty() }, attachments = attachments))
+        return true
+    }
+
     internal fun addPastedAttachments(
         target: ChatAttachmentTarget,
         attachments: List<Attachment>,

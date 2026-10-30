@@ -1,0 +1,107 @@
+
+com.m57.hermescontrol.extension.ExtensionBrokerTest:.
+Error in profileAndConversationSwitchDiscardInFlightDraftAndQueuedDisplay(com.m57.hermescontrol.extension.ExtensionBrokerTest):
+java.lang.AssertionError: Verification failed: call 1 of 1: ChatViewModel(#4).stageExtensionDraft$app(any<ChatAttachmentTarget>(), any<String>(), any<File>())) should not be called
+
+Calls:
+1) ChatViewModel(#4).stageExtensionDraft$app(ChatAttachmentTarget(sessionId=conversation-a, generation=1, baseUrl=http://127.0.0.1:19119, connectionProfileId=connection-a, agentProfileId=agent-a), old draft, null)
+
+
+Stack traces:
+1)                                                 io.mockk.impl.InternalPlatform.captureStackTrace                                                         (InternalPlatform.kt:145)
+                                                     io.mockk.impl.stub.MockKStub.handleInvocation                                                          (MockKStub.kt:280)
+                   io.mockk.impl.instantiation.JvmMockFactoryHelper$mockHandler$1.invocation                                                                (JvmMockFactoryHelper.kt:41)
+                                             io.mockk.proxy.android.advice.Advice.handle$lambda$0                                                           (Advice.kt:82)
+                   io.mockk.proxy.android.advice.Advice$$ExternalSyntheticLambda0.call                                                                      (D8$$SyntheticClass:0)
+                                      com.m57.hermescontrol.ui.chat.ChatViewModel.stageExtensionDraft$app                                                   (-:54)
+                          com.m57.hermescontrol.extension.ExtensionBroker$stage$1.invokeSuspend                                                             (ExtensionBroker.kt:284)
+                              kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith                                                                (ContinuationImpl.kt:34)
+                             kotlinx.coroutines.internal.DispatchedContinuationKt.resumeCancellableWithInternal                                             (DispatchedContinuation.kt:384)
+                                      kotlinx.coroutines.intrinsics.CancellableKt.startCoroutineCancellable                                                 (Cancellable.kt:26)
+                                                kotlinx.coroutines.CoroutineStart.invoke                                                                    (CoroutineStart.kt:358)
+                                             kotlinx.coroutines.AbstractCoroutine.start                                                                     (AbstractCoroutine.kt:134)
+                                 kotlinx.coroutines.BuildersKt__Builders_commonKt.launch                                                                    (Builders.common.kt:209)
+                                                    kotlinx.coroutines.BuildersKt.launch                                                                    (-:1)
+                                 kotlinx.coroutines.BuildersKt__Builders_commonKt.launch$default                                                            (Builders.common.kt:200)
+                                                    kotlinx.coroutines.BuildersKt.launch$default                                                            (-:1)
+                                  com.m57.hermescontrol.extension.ExtensionBroker.stage                                                                     (ExtensionBroker.kt:268)
+                              com.m57.hermescontrol.extension.ExtensionBrokerTest.profileAndConversationSwitchDiscardInFlightDraftAndQueuedDisplay$lambda$5 (ExtensionBrokerTest.kt:192)
+   com.m57.hermescontrol.extension.ExtensionBrokerTest$$ExternalSyntheticLambda20.invoke                                                                    (D8$$SyntheticClass:0)
+                              com.m57.hermescontrol.extension.ExtensionBrokerTest.main$lambda$0                                                             (ExtensionBrokerTest.kt:32)
+   com.m57.hermescontrol.extension.ExtensionBrokerTest$$ExternalSyntheticLambda14.run                                                                       (D8$$SyntheticClass:0)
+                                   java.util.concurrent.Executors$RunnableAdapter.call                                                                      (Executors.java:524)
+                                                  java.util.concurrent.FutureTask.run                                                                       (FutureTask.java:317)
+                                         android.app.Instrumentation$SyncRunnable.run                                                                       (Instrumentation.java:2616)
+                                                               android.os.Handler.handleCallback                                                            (Handler.java:995)
+                                                               android.os.Handler.dispatchMessage                                                           (Handler.java:103)
+                                                                android.os.Looper.loopOnce                                                                  (Looper.java:248)
+                                                                android.os.Looper.loop                                                                      (Looper.java:338)
+                                                       android.app.ActivityThread.main                                                                      (ActivityThread.java:9067)
+                                                         java.lang.reflect.Method.invoke                                                                    (Method.java:-2)N
+                          com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run                                                                       (RuntimeInit.java:593)
+                                               com.android.internal.os.ZygoteInit.main                                                                      (ZygoteInit.java:932)
+	at io.mockk.impl.recording.states.VerifyingState.failIfNotPassed(VerifyingState.kt:65)
+	at io.mockk.impl.recording.states.VerifyingState.recordingDone(VerifyingState.kt:39)
+	at io.mockk.impl.recording.CommonCallRecorder.done(CommonCallRecorder.kt:50)
+	at io.mockk.impl.eval.RecordedBlockEvaluator.record(RecordedBlockEvaluator.kt:63)
+	at io.mockk.impl.eval.VerifyBlockEvaluator.verify(VerifyBlockEvaluator.kt:32)
+	at io.mockk.MockKDsl.internalVerify(API.kt:128)
+	at io.mockk.MockKKt.verify(MockK.kt:240)
+	at io.mockk.MockKKt.verify$default(MockK.kt:230)
+	at com.m57.hermescontrol.extension.ExtensionBrokerTest.profileAndConversationSwitchDiscardInFlightDraftAndQueuedDisplay(ExtensionBrokerTest.kt:229)
+
+
+Time: 9.313
+There was 1 failure:
+1) profileAndConversationSwitchDiscardInFlightDraftAndQueuedDisplay(com.m57.hermescontrol.extension.ExtensionBrokerTest)
+java.lang.AssertionError: Verification failed: call 1 of 1: ChatViewModel(#4).stageExtensionDraft$app(any<ChatAttachmentTarget>(), any<String>(), any<File>())) should not be called
+
+Calls:
+1) ChatViewModel(#4).stageExtensionDraft$app(ChatAttachmentTarget(sessionId=conversation-a, generation=1, baseUrl=http://127.0.0.1:19119, connectionProfileId=connection-a, agentProfileId=agent-a), old draft, null)
+
+
+Stack traces:
+1)                                                 io.mockk.impl.InternalPlatform.captureStackTrace                                                         (InternalPlatform.kt:145)
+                                                     io.mockk.impl.stub.MockKStub.handleInvocation                                                          (MockKStub.kt:280)
+                   io.mockk.impl.instantiation.JvmMockFactoryHelper$mockHandler$1.invocation                                                                (JvmMockFactoryHelper.kt:41)
+                                             io.mockk.proxy.android.advice.Advice.handle$lambda$0                                                           (Advice.kt:82)
+                   io.mockk.proxy.android.advice.Advice$$ExternalSyntheticLambda0.call                                                                      (D8$$SyntheticClass:0)
+                                      com.m57.hermescontrol.ui.chat.ChatViewModel.stageExtensionDraft$app                                                   (-:54)
+                          com.m57.hermescontrol.extension.ExtensionBroker$stage$1.invokeSuspend                                                             (ExtensionBroker.kt:284)
+                              kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith                                                                (ContinuationImpl.kt:34)
+                             kotlinx.coroutines.internal.DispatchedContinuationKt.resumeCancellableWithInternal                                             (DispatchedContinuation.kt:384)
+                                      kotlinx.coroutines.intrinsics.CancellableKt.startCoroutineCancellable                                                 (Cancellable.kt:26)
+                                                kotlinx.coroutines.CoroutineStart.invoke                                                                    (CoroutineStart.kt:358)
+                                             kotlinx.coroutines.AbstractCoroutine.start                                                                     (AbstractCoroutine.kt:134)
+                                 kotlinx.coroutines.BuildersKt__Builders_commonKt.launch                                                                    (Builders.common.kt:209)
+                                                    kotlinx.coroutines.BuildersKt.launch                                                                    (-:1)
+                                 kotlinx.coroutines.BuildersKt__Builders_commonKt.launch$default                                                            (Builders.common.kt:200)
+                                                    kotlinx.coroutines.BuildersKt.launch$default                                                            (-:1)
+                                  com.m57.hermescontrol.extension.ExtensionBroker.stage                                                                     (ExtensionBroker.kt:268)
+                              com.m57.hermescontrol.extension.ExtensionBrokerTest.profileAndConversationSwitchDiscardInFlightDraftAndQueuedDisplay$lambda$5 (ExtensionBrokerTest.kt:192)
+   com.m57.hermescontrol.extension.ExtensionBrokerTest$$ExternalSyntheticLambda20.invoke                                                                    (D8$$SyntheticClass:0)
+                              com.m57.hermescontrol.extension.ExtensionBrokerTest.main$lambda$0                                                             (ExtensionBrokerTest.kt:32)
+   com.m57.hermescontrol.extension.ExtensionBrokerTest$$ExternalSyntheticLambda14.run                                                                       (D8$$SyntheticClass:0)
+                                   java.util.concurrent.Executors$RunnableAdapter.call                                                                      (Executors.java:524)
+                                                  java.util.concurrent.FutureTask.run                                                                       (FutureTask.java:317)
+                                         android.app.Instrumentation$SyncRunnable.run                                                                       (Instrumentation.java:2616)
+                                                               android.os.Handler.handleCallback                                                            (Handler.java:995)
+                                                               android.os.Handler.dispatchMessage                                                           (Handler.java:103)
+                                                                android.os.Looper.loopOnce                                                                  (Looper.java:248)
+                                                                android.os.Looper.loop                                                                      (Looper.java:338)
+                                                       android.app.ActivityThread.main                                                                      (ActivityThread.java:9067)
+                                                         java.lang.reflect.Method.invoke                                                                    (Method.java:-2)N
+                          com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run                                                                       (RuntimeInit.java:593)
+                                               com.android.internal.os.ZygoteInit.main                                                                      (ZygoteInit.java:932)
+	at io.mockk.impl.recording.states.VerifyingState.failIfNotPassed(VerifyingState.kt:65)
+	at io.mockk.impl.recording.states.VerifyingState.recordingDone(VerifyingState.kt:39)
+	at io.mockk.impl.recording.CommonCallRecorder.done(CommonCallRecorder.kt:50)
+	at io.mockk.impl.eval.RecordedBlockEvaluator.record(RecordedBlockEvaluator.kt:63)
+	at io.mockk.impl.eval.VerifyBlockEvaluator.verify(VerifyBlockEvaluator.kt:32)
+	at io.mockk.MockKDsl.internalVerify(API.kt:128)
+	at io.mockk.MockKKt.verify(MockK.kt:240)
+	at io.mockk.MockKKt.verify$default(MockK.kt:230)
+	at com.m57.hermescontrol.extension.ExtensionBrokerTest.profileAndConversationSwitchDiscardInFlightDraftAndQueuedDisplay(ExtensionBrokerTest.kt:229)
+
+FAILURES!!!
+Tests run: 2,  Failures: 1

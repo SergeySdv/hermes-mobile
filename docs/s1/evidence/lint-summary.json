@@ -1,0 +1,9 @@
+{
+  "app": {
+    "Warning": 277,
+    "Hint": 15
+  },
+  "extension-test-addon": {
+    "Warning": 15
+  }
+}

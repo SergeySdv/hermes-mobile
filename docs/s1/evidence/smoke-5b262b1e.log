@@ -1,0 +1,4 @@
+Prepare a fresh conversation; no data clearing
+Real Binder staging + duplicate receipt obtained
+Confirmed: one upload, one prompt; answer in both applications
+PASS: consent, draft, dedup, zero pre-send requests, one send, projection, version mismatch and revoke

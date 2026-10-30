@@ -31,3 +31,7 @@ plugins {
 
 rootProject.name = "HermesControl"
 include(":app")
+
+include(":extension-contract")
+// Test harness is opt-in: ordinary Hermes builds have no add-on build dependency.
+if (providers.gradleProperty("s1Harness").orNull == "true") include(":extension-test-addon")

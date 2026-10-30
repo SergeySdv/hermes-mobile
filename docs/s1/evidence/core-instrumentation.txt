@@ -1,0 +1,7 @@
+
+com.m57.hermescontrol.extension.ExtensionPhotoTest:....
+com.m57.hermescontrol.extension.ExtensionBrokerTest:.
+
+Time: 1.563
+
+OK (5 tests)

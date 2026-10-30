@@ -1,0 +1,10 @@
+{
+  "before": {
+    "image.attach_bytes": 4,
+    "prompt.submit": 9
+  },
+  "after": {
+    "image.attach_bytes": 4,
+    "prompt.submit": 10
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "wrong_apk_sha256": "8adfab5febcb0229080c175d44bf93c3f5147e744d95e9e4a456f06196556e37",
+  "trusted_apk_sha256": "6e3f8f97e5587379ce77c827cc2dc1c40d009903fd333bfcd4e6fb54cafb99c8",
+  "result": "REFUSED: SecurityException",
+  "backend_counts_unchanged": true
+}

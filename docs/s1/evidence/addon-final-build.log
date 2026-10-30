@@ -1,0 +1,154 @@
+Calculating task graph as no cached configuration is available for tasks: :extension-test-addon:assembleDebug :extension-test-addon:assembleDebugAndroidTest :extension-test-addon:lintDebug
+> Task :extension-test-addon:preBuild UP-TO-DATE
+> Task :extension-contract:preBuild UP-TO-DATE
+> Task :extension-test-addon:preDebugBuild UP-TO-DATE
+> Task :extension-contract:preDebugBuild UP-TO-DATE
+> Task :extension-test-addon:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :extension-contract:generateDebugResources UP-TO-DATE
+> Task :extension-contract:packageDebugResources UP-TO-DATE
+> Task :extension-contract:processDebugNavigationResources UP-TO-DATE
+> Task :extension-contract:parseDebugLocalResources UP-TO-DATE
+> Task :extension-contract:generateDebugRFile UP-TO-DATE
+> Task :extension-contract:javaPreCompileDebug UP-TO-DATE
+> Task :extension-test-addon:generateDebugBuildConfig UP-TO-DATE
+> Task :extension-test-addon:generateDebugResources UP-TO-DATE
+> Task :extension-contract:compileDebugAidl UP-TO-DATE
+> Task :extension-test-addon:packageDebugResources UP-TO-DATE
+> Task :extension-test-addon:processDebugNavigationResources UP-TO-DATE
+> Task :extension-test-addon:parseDebugLocalResources UP-TO-DATE
+> Task :extension-contract:compileDebugKotlin NO-SOURCE
+> Task :extension-test-addon:generateDebugRFile UP-TO-DATE
+> Task :extension-test-addon:javaPreCompileDebug UP-TO-DATE
+> Task :extension-contract:generateDebugAssets UP-TO-DATE
+> Task :extension-contract:compileDebugJavaWithJavac UP-TO-DATE
+> Task :extension-contract:mergeDebugAssets UP-TO-DATE
+> Task :extension-test-addon:generateDebugAssets UP-TO-DATE
+> Task :extension-test-addon:mergeDebugAssets UP-TO-DATE
+> Task :extension-contract:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :extension-test-addon:compressDebugAssets UP-TO-DATE
+> Task :extension-test-addon:generateDebugGlobalSynthetics UP-TO-DATE
+> Task :extension-contract:processDebugJavaRes NO-SOURCE
+> Task :extension-test-addon:checkDebugDuplicateClasses UP-TO-DATE
+> Task :extension-test-addon:desugarDebugFileDependencies UP-TO-DATE
+> Task :extension-test-addon:compileDebugKotlin NO-SOURCE
+> Task :extension-test-addon:mergeExtDexDebug UP-TO-DATE
+> Task :extension-test-addon:processDebugJavaRes NO-SOURCE
+> Task :extension-test-addon:mergeDebugJavaResource UP-TO-DATE
+> Task :extension-contract:bundleLibRuntimeToDirDebug UP-TO-DATE
+> Task :extension-test-addon:mergeLibDexDebug UP-TO-DATE
+> Task :extension-contract:mapDebugSourceSetPaths UP-TO-DATE
+> Task :extension-contract:compileDebugLibraryResources UP-TO-DATE
+> Task :extension-contract:writeDebugAarMetadata UP-TO-DATE
+> Task :extension-test-addon:checkDebugAarMetadata UP-TO-DATE
+> Task :extension-test-addon:mapDebugSourceSetPaths UP-TO-DATE
+> Task :extension-test-addon:compileDebugNavigationResources UP-TO-DATE
+> Task :extension-test-addon:mergeDebugResources UP-TO-DATE
+> Task :extension-test-addon:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :extension-contract:extractDeepLinksDebug UP-TO-DATE
+> Task :extension-contract:processDebugManifest UP-TO-DATE
+> Task :extension-test-addon:extractDeepLinksDebug UP-TO-DATE
+> Task :extension-test-addon:processDebugMainManifest UP-TO-DATE
+> Task :extension-test-addon:processDebugManifest UP-TO-DATE
+> Task :extension-test-addon:processDebugManifestForPackage UP-TO-DATE
+> Task :extension-test-addon:processDebugResources UP-TO-DATE
+> Task :extension-contract:mergeDebugJniLibFolders UP-TO-DATE
+> Task :extension-contract:mergeDebugNativeLibs NO-SOURCE
+> Task :extension-contract:copyDebugJniLibsProjectOnly UP-TO-DATE
+> Task :extension-test-addon:mergeDebugJniLibFolders UP-TO-DATE
+> Task :extension-test-addon:mergeDebugNativeLibs NO-SOURCE
+> Task :extension-test-addon:stripDebugDebugSymbols NO-SOURCE
+> Task :extension-test-addon:validateSigningDebug UP-TO-DATE
+> Task :extension-test-addon:writeDebugAppMetadata UP-TO-DATE
+> Task :extension-test-addon:writeDebugSigningConfigVersions UP-TO-DATE
+> Task :extension-test-addon:preDebugAndroidTestBuild SKIPPED
+> Task :extension-test-addon:mergeDebugAndroidTestManifest UP-TO-DATE
+> Task :extension-test-addon:processDebugAndroidTestManifest UP-TO-DATE
+> Task :extension-test-addon:generateDebugAndroidTestBuildConfig UP-TO-DATE
+> Task :extension-test-addon:generateDebugAndroidTestResources UP-TO-DATE
+> Task :extension-test-addon:packageDebugAndroidTestResources UP-TO-DATE
+> Task :extension-test-addon:processDebugAndroidTestNavigationResources UP-TO-DATE
+> Task :extension-test-addon:parseDebugAndroidTestLocalResources UP-TO-DATE
+> Task :extension-test-addon:generateDebugAndroidTestRFile UP-TO-DATE
+> Task :extension-test-addon:javaPreCompileDebugAndroidTest UP-TO-DATE
+> Task :extension-test-addon:generateDebugAndroidTestAssets UP-TO-DATE
+> Task :extension-test-addon:mergeDebugAndroidTestAssets UP-TO-DATE
+> Task :extension-test-addon:compressDebugAndroidTestAssets UP-TO-DATE
+> Task :extension-test-addon:generateDebugAndroidTestGlobalSynthetics UP-TO-DATE
+> Task :extension-test-addon:checkDebugAndroidTestDuplicateClasses UP-TO-DATE
+> Task :extension-test-addon:desugarDebugAndroidTestFileDependencies UP-TO-DATE
+> Task :extension-test-addon:mergeExtDexDebugAndroidTest UP-TO-DATE
+> Task :extension-test-addon:mergeLibDexDebugAndroidTest UP-TO-DATE
+> Task :extension-test-addon:checkDebugAndroidTestAarMetadata UP-TO-DATE
+> Task :extension-test-addon:mapDebugAndroidTestSourceSetPaths UP-TO-DATE
+> Task :extension-test-addon:compileDebugAndroidTestNavigationResources UP-TO-DATE
+> Task :extension-test-addon:mergeDebugAndroidTestResources UP-TO-DATE
+> Task :extension-test-addon:processDebugAndroidTestResources UP-TO-DATE
+> Task :extension-test-addon:mergeDebugAndroidTestJniLibFolders UP-TO-DATE
+> Task :extension-test-addon:mergeDebugAndroidTestNativeLibs NO-SOURCE
+> Task :extension-test-addon:stripDebugAndroidTestDebugSymbols NO-SOURCE
+> Task :extension-test-addon:validateSigningDebugAndroidTest UP-TO-DATE
+> Task :extension-test-addon:writeDebugAndroidTestSigningConfigVersions UP-TO-DATE
+> Task :extension-contract:checkDebugAarMetadata UP-TO-DATE
+> Task :extension-contract:extractDebugAnnotations UP-TO-DATE
+> Task :extension-contract:extractDeepLinksForAarDebug UP-TO-DATE
+> Task :extension-contract:mergeDebugGeneratedProguardFiles UP-TO-DATE
+> Task :extension-contract:mergeDebugConsumerProguardFiles UP-TO-DATE
+> Task :extension-contract:prepareDebugArtProfile UP-TO-DATE
+> Task :extension-contract:prepareLintJarForPublish UP-TO-DATE
+> Task :extension-contract:mergeDebugJavaResource UP-TO-DATE
+> Task :extension-contract:syncDebugLibJars UP-TO-DATE
+> Task :extension-contract:bundleDebugLocalLintAar UP-TO-DATE
+> Task :extension-contract:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :extension-contract:createFullJarDebug UP-TO-DATE
+> Task :extension-contract:preDebugAndroidTestBuild UP-TO-DATE
+> Task :extension-contract:writeDebugLintModelMetadata UP-TO-DATE
+> Task :extension-contract:generateDebugAndroidTestLintModel UP-TO-DATE
+> Task :extension-contract:extractProguardFiles UP-TO-DATE
+> Task :extension-contract:generateDebugLintModel UP-TO-DATE
+> Task :extension-contract:preDebugUnitTestBuild UP-TO-DATE
+> Task :extension-contract:generateDebugUnitTestLintModel UP-TO-DATE
+> Task :extension-contract:lintAnalyzeDebug UP-TO-DATE
+> Task :extension-contract:lintAnalyzeDebugAndroidTest UP-TO-DATE
+> Task :extension-contract:lintAnalyzeDebugUnitTest UP-TO-DATE
+> Task :extension-test-addon:extractProguardFiles UP-TO-DATE
+> Task :extension-test-addon:preDebugUnitTestBuild UP-TO-DATE
+> Task :extension-test-addon:compileDebugJavaWithJavac
+> Task :extension-test-addon:bundleDebugClassesToCompileJar
+> Task :extension-test-addon:compileDebugAndroidTestKotlin NO-SOURCE
+> Task :extension-test-addon:compileDebugAndroidTestJavaWithJavac UP-TO-DATE
+> Task :extension-test-addon:processDebugAndroidTestJavaRes NO-SOURCE
+> Task :extension-test-addon:mergeDebugAndroidTestJavaResource UP-TO-DATE
+> Task :extension-test-addon:dexBuilderDebugAndroidTest UP-TO-DATE
+> Task :extension-test-addon:mergeProjectDexDebugAndroidTest UP-TO-DATE
+> Task :extension-test-addon:packageDebugAndroidTest UP-TO-DATE
+> Task :extension-test-addon:createDebugAndroidTestApkListingFileRedirect UP-TO-DATE
+> Task :extension-test-addon:assembleDebugAndroidTest UP-TO-DATE
+> Task :extension-test-addon:generateDebugAndroidTestLintModel
+> Task :extension-test-addon:generateDebugLintReportModel
+> Task :extension-test-addon:generateDebugUnitTestLintModel
+> Task :extension-test-addon:dexBuilderDebug
+> Task :extension-test-addon:mergeProjectDexDebug
+> Task :extension-test-addon:packageDebug
+> Task :extension-test-addon:createDebugApkListingFileRedirect UP-TO-DATE
+> Task :extension-test-addon:assembleDebug
+> Task :extension-test-addon:lintAnalyzeDebugAndroidTest
+> Task :extension-test-addon:lintAnalyzeDebugUnitTest
+> Task :extension-test-addon:lintAnalyzeDebug
+
+> Task :extension-test-addon:lintReportDebug
+Wrote HTML report to file:///private/tmp/hermes-s1/extension-test-addon/build/reports/lint-results-debug.html
+Wrote SARIF report to file:///private/tmp/hermes-s1/extension-test-addon/build/reports/lint-results-debug.sarif
+
+> Task :extension-test-addon:lintDebug
+
+[Incubating] Problems report is available at: file:///private/tmp/hermes-s1/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.8.2/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 3s
+112 actionable tasks: 13 executed, 99 up-to-date
+Configuration cache entry stored.
