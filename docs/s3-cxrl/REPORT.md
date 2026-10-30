@@ -1,4 +1,10 @@
-# S3 CXR-L text checkpoint — installation review
+# S3 CXR-L text checkpoint — companion installation blocked
+
+Current hardware result (2026-10-30): corrected add-on installed and launched on
+OnePlus; Hi Rokid Global authorization PASS; CXR and Bluetooth ready PASS;
+companion installation FAILED twice; launch/text/JPEG/full IPC NOT_RUN.
+See the appended device run. Earlier build and installation proposals below are
+historical snapshots, not current device state.
 
 Source commit: `57820d27ef46917207d15d65084c319aebaf01d7`. Parent functional base: PR #4, `58510a67`; PR #5 phone evidence remains separate. No Hermes code or historical evidence changed.
 
@@ -75,3 +81,46 @@ Same package, version, certificate and permissions. Companion bytes unchanged.
 Replacement installation pending approval because prior approval named exact APKs.
 [Updated audit](evidence/device-first-install/fixed-apk-audit.json),
 [build log](evidence/device-first-install/fixed-build.log).
+
+## Authorized run on physical OnePlus with corrected add-on
+
+- User explicitly approved replacement APK from source `4f7dc0bb`; USB ADB
+  `install -r --user 0` exited 0 / Success. No data clear or unrelated uninstall.
+- Installed package `com.m57.hermes.rokid.addon.debug`, version `0.1-s3-probe` / 1,
+  APK SHA-256 `f8b61e245bb810572be05dae5c6ab8b59de53a88564914de71fd2a85261da685`.
+- Hi Rokid Global displayed third-party trust and glasses CAMERA consent. Continued
+  under the approved scope; add-on displayed `AUTHORIZED`. No credentials captured.
+- Connect returned callbacks `CXR: true; Bluetooth: true`.
+  [Observed UI](evidence/device-4f7dc0bb/connected.xml).
+- Query returned `ABSENT`. Requested installation of bundled original companion
+  `de30616050690023c1ca26723b2509a0e1a67fe4451299e60b8fd64d81f12eb0`.
+- First attempt: `INSTALL_REQUESTED` then `INSTALL_FAILED`.
+  [Observed failure](evidence/device-4f7dc0bb/install-failed.xml).
+  A subsequent query returned `ABSENT` again.
+- One bounded retry of the same approved APK: `INSTALL_FAILED` again while both
+  connection flags stayed true, observed 7.5 seconds after the Install tap returned.
+  [Retry XML](evidence/device-4f7dc0bb/install-retry.xml),
+  [retry timing/status](evidence/device-4f7dc0bb/install-retry.json).
+- User explicitly reported no message or confirmation prompt on the glasses.
+
+**Reproducible blocker:** CXR-L 1.0.3 / Hi Rokid Global G1.15.6.1012 /
+paired Glasses_1006 firmware 1.27.009-20261014-150203:
+`appUploadAndInstall(private bundled APK path)` returns
+`onInstallAppResult(false)` on two attempts, and the target package remains absent.
+The SDK callback exposes no error code/string. A bounded read-only log inspection
+emitted only known install-error symbols/codes; none were available. Raw Hi Rokid
+logs were not saved or printed because they may contain credentials. No claim of
+an Android package-manager rejection, transfer corruption, ABI/API mismatch or
+firmware incompatibility can be made from this Boolean result alone.
+
+The official sample also uses minSdk31 / targetSdk36; the SDK implementation opens
+the local APK as a ParcelFileDescriptor. The packaged asset was byte-verified on
+Mac, but there is no receiver-side hash, so glasses transfer integrity is UNKNOWN.
+Direct Mac ADB to glasses was not required or attempted for this run.
+
+Next diagnostic requirement: a specific upload/installer error from the glasses
+or Hi Rokid/vendor diagnostic channel for this operation. Do not alter firmware,
+pairing, signature, SDK version or package ID merely to bypass the failure.
+No additional install retries made. Companion launch, display acknowledgement,
+physical text, JPEG capture and the full Hermes cycle remain NOT_RUN. The local
+server/forwarding, S2 core and test harness were not changed.
