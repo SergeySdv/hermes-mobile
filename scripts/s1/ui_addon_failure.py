@@ -6,6 +6,19 @@ import json
 import time
 import ui_smoke as ui
 
+# Establish a real live grant before killing the client process.
+ui.launch(ui.CORE)
+ui.tap('New Chat')
+ui.launch(ui.ADDON)
+ui.tap('Connect to Hermes'); ui.wait_text('OK')
+ui.tap('Request conversation access'); ui.wait_text('AWAITING_USER')
+ui.tap('Open Hermes to approve / send')
+root = ui.wait_text('Allow extension for this conversation?')
+for node in root.iter('node'):
+    if node.get('checkable') == 'true' and node.get('checked') == 'false': ui.tap_node(node)
+ui.tap('Allow')
+ui.launch(ui.ADDON); ui.wait_text('OK')
+
 for state, command in [
     ('stopped', ('shell', 'am', 'force-stop', 'com.m57.hermes.extensiontest')),
     ('disabled', ('shell', 'pm', 'disable-user', '--user', '0', 'com.m57.hermes.extensiontest')),
@@ -13,6 +26,7 @@ for state, command in [
 ]:
     print(ui.adb(*command).decode(), flush=True)
     ui.launch(ui.CORE)
+    assert 'Revoke extension' not in ui.nodes_text(ui.tree())
     ui.tap('New Chat')
     time.sleep(1)
     before = ui.counts()

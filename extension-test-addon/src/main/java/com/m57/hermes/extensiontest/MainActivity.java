@@ -108,6 +108,7 @@ public class MainActivity extends Activity {
         try {
             int uid = getPackageManager().getApplicationInfo(core, 0).uid;
             if (!SignerTrust.matches(getPackageManager(), uid, core, BuildConfig.CORE_SIGNER)) throw new SecurityException();
+            if (bound && broker != null) { call(() -> broker.negotiate(1, 0, 3)); return; }
             if (!bound) bound = bindService(new Intent().setComponent(new ComponentName(core, "com.m57.hermescontrol.extension.ExtensionService")), connection, BIND_AUTO_CREATE);
             status.setText(bound ? "CONNECTING" : "UNAVAILABLE");
         } catch (Exception failure) { status.setText("UNTRUSTED_OR_ABSENT_CORE"); }

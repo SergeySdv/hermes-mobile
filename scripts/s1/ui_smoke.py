@@ -44,10 +44,13 @@ def wait_text(value, seconds=20):
     raise AssertionError('Missing UI text: ' + value)
 
 def tap(value):
-    root = tree()
-    for n in root.iter('node'):
-        if value.lower() in (n.get('text','').lower(), n.get('content-desc','').lower()) and n.get('enabled') == 'true':
-            tap_node(n); return
+    end = time.monotonic() + 20
+    while time.monotonic() < end:
+        root = tree()
+        for n in root.iter('node'):
+            if value.lower() in (n.get('text','').lower(), n.get('content-desc','').lower()) and n.get('enabled') == 'true':
+                tap_node(n); return
+        time.sleep(.3)
     raise AssertionError('Missing enabled control: ' + value)
 
 def launch(component):
